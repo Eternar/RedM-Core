@@ -338,21 +338,19 @@
             y = refY;
         }
 
-        public static bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY, ref float screenZ)
+        public static bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY)
         {
             float refX = 0.0f;
             float refY = 0.0f;
-            float refZ = 0.0f;
             bool result = false;
 
             unsafe
             {
-                result = Function.Call<bool>(NativeHashes["GET_SCREEN_COORD_FROM_WORLD_COORD"], worldX, worldY, worldZ, &refX, &refY, &refZ);
+                result = Function.Call<bool>(NativeHashes["GET_SCREEN_COORD_FROM_WORLD_COORD"], worldX, worldY, worldZ, &refX, &refY);
             }
 
             screenX = refX;
             screenY = refY;
-            screenZ = refZ;
             return result;
         }
 
