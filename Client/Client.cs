@@ -71,6 +71,7 @@
             ["PLAYER_ID"] = (Hash)0x217E9DC48139933D,
             ["GET_PLAYER_PED"] = (Hash)0x275F255ED201B937,
             ["BOOST_PLAYER_HORSE_SPEED_FOR_TIME"] = (Hash)0x09C28F828EE674FA,
+            ["GET_PLAYER_NAME"] = (Hash)0x7124FD9AC0E01BA0,
 
             ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
@@ -367,7 +368,7 @@
         public static void SetTextScale(float scaleX, float scaleY)
             => Function.Call(NativeHashes["_BG_SET_TEXT_SCALE"], scaleX, scaleY);
 
-        public static void SetTextCenre(bool align)
+        public static void SetTextCentre(bool align)
             => API.SetTextCentre(align);
 
         public static void SetTextFontForCurrentCommand(int fontType)
@@ -375,5 +376,8 @@
 
         public static bool NetworkIsPlayerActive(int player)
             => Function.Call<bool>(NativeHashes["NETWORK_IS_PLAYER_ACTIVE"], player);
+
+        public static string GetPlayerName(int player)
+            => Function.Call<string>(NativeHashes["GET_PLAYER_NAME"], player);
     }
 }
