@@ -126,13 +126,50 @@
             => Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, groundz);
 
         public static bool GetGroundZFor_3dCoord(float x, float y, float z, ref float groundz)
-            => Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], x, y, z, groundz);
+        {
+            float refZ = 0.0f;
+            bool result = false;
+
+            unsafe
+            {
+                result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], x, y, z, &refZ);
+            }
+
+            groundz = refZ;
+            return result;
+        }
 
         public static bool GetGroundZ_AndNormal_For_3dCoord(Vector3 coords, ref float groundz, ref Vector3 normal)
-            => Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, groundz, normal);
+        {
+            Vector3 refNormal = Vector3.Zero;
+            float refZ = 0.0f;
+            bool result = false;
+
+            unsafe
+            {
+                result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, &refZ, &refNormal);
+            }
+
+            groundz = refZ;
+            normal = refNormal;
+            return result;
+        }
 
         public static bool GetGroundZ_AndNormal_For_3dCoord(float x, float y, float z, ref float groundz, ref Vector3 normal)
-            => Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], x, y, z, groundz, normal);
+        {
+            Vector3 refNormal = Vector3.Zero;
+            float refZ = 0.0f;
+            bool result = false;
+
+            unsafe
+            {
+                result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], x, y, z, &refZ, &refNormal);
+            }
+
+            groundz = refZ;
+            normal = refNormal;
+            return result;
+        }
 
         public static void PlaceEntityOnGroundProperly(int entity)
             => Function.Call(NativeHashes["PLACE_ENTITY_ON_GROUND_PROPERLY"], entity, false);
@@ -281,11 +318,42 @@
         public static bool IsEntityOnScreen(int entity)
             => Function.Call<bool>(NativeHashes["IS_ENTITY_ON_SCREEN"], entity);
 
+        /// <summary>
+        /// Hardcoded to always set x to 1280 and y to 720.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public static void GetScreenResolution(ref int x, ref int y)
-            => Function.Call(NativeHashes["GET_SCREEN_RESOLUTION"], x, y);
+        {
+            int refX = 0;
+            int refY = 0;
+
+            unsafe
+            {
+                Function.Call(NativeHashes["GET_SCREEN_RESOLUTION"], &refX, &refY);
+            }
+
+            x = refX;
+            y = refY;
+        }
 
         public static bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY, ref float screenZ)
-            => Function.Call<bool>(NativeHashes["GET_SCREEN_COORD_FROM_WORLD_COORD"], worldX, worldY, worldZ, screenX, screenY, screenZ);
+        {
+            float refX = 0.0f;
+            float refY = 0.0f;
+            float refZ = 0.0f;
+            bool result = false;
+
+            unsafe
+            {
+                result = Function.Call<bool>(NativeHashes["GET_SCREEN_COORD_FROM_WORLD_COORD"], worldX, worldY, worldZ, &refX, &refY, &refZ);
+            }
+
+            screenX = refX;
+            screenY = refY;
+            screenZ = refZ;
+            return result;
+        }
 
         public static VarString CreateVarString(string text)
             => Function.Call<long>(NativeHashes["VAR_STRING"], eVarStringFlag.Text, "LITERAL_STRING", text);
