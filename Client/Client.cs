@@ -61,6 +61,7 @@
             ["GET_ENTITY_VELOCITY"] = (Hash)0x4805D2B1D8CF94A9,
             ["SET_ENTITY_VELOCITY"] = (Hash)0x1C99BB7B6E96D16F,
             ["SET_ENTITY_INVINCIBLE"] = (Hash)0xA5C38736C426FCB8,
+            ["IS_ENTITY_ON_SCREEN"] = (Hash)0x613C15D5D8DB781F,
 
             ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
@@ -70,6 +71,8 @@
             ["PLAYER_ID"] = (Hash)0x217E9DC48139933D,
             ["GET_PLAYER_PED"] = (Hash)0x275F255ED201B937,
             ["BOOST_PLAYER_HORSE_SPEED_FOR_TIME"] = (Hash)0x09C28F828EE674FA,
+
+            ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
             // Vehicle
             ["CREATE_VEHICLE"] = (Hash)0xAF35D0D2583051B0,
@@ -84,6 +87,18 @@
             ["_IS_THIS_MODEL_A_HORSE"] = (Hash)0x772A1969F649E902,
 
             ["GET_HASH_KEY"] = (Hash)0xFD340785ADF8CFB7,
+
+            // Graphics
+            ["GET_SCREEN_COORD_FROM_WORLD_COORD"] = (Hash)0xCB50D7AFCC8B0EC6,
+            ["GET_SCREEN_RESOLUTION"] = (Hash)0x66773C92835D0909,
+
+            // Hud
+            ["_BG_SET_TEXT_COLOR"] = (Hash)0x16FA5CE47F184F1E,
+            ["_BG_SET_TEXT_SCALE"] = (Hash)0xA1253A3C870B6843,
+            ["_BG_DISPLAY_TEXT"] = (Hash)0x16794E044C9EFB58,
+
+            // Misc
+            ["VAR_STRING"] = (Hash)0xFA925AC00EB830B9,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -262,5 +277,35 @@
 
         public static int GetVehiclePedIsUsing(int ped)
             => Function.Call<int>(NativeHashes["GET_VEHICLE_PED_IS_USING"], ped);
+
+        public static bool IsEntityOnScreen(int entity)
+            => Function.Call<bool>(NativeHashes["IS_ENTITY_ON_SCREEN"], entity);
+
+        public static void GetScreenResolution(ref int x, ref int y)
+            => Function.Call(NativeHashes["GET_SCREEN_RESOLUTION"], x, y);
+
+        public static bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY, ref float screenZ)
+            => Function.Call<bool>(NativeHashes["GET_SCREEN_COORD_FROM_WORLD_COORD"], worldX, worldY, worldZ, screenX, screenY, screenZ);
+
+        public static VarString CreateVarString(string text)
+            => Function.Call<long>(NativeHashes["VAR_STRING"], eVarStringFlag.Text, "LITERAL_STRING", text);
+
+        public static void DisplayText(VarString str, float x, float y)
+            => Function.Call(NativeHashes["_BG_DISPLAY_TEXT"], str.Text, x, y);
+
+        public static void SetTextColor(int r, int g, int b, int a)
+            => Function.Call(NativeHashes["_BG_SET_TEXT_COLOR"], r, g, b, a);
+
+        public static void SetTextScale(float scaleX, float scaleY)
+            => Function.Call(NativeHashes["_BG_SET_TEXT_SCALE"], scaleX, scaleY);
+
+        public static void SetTextCenre(bool align)
+            => API.SetTextCentre(align);
+
+        public static void SetTextFontForCurrentCommand(int fontType)
+            => API.SetTextFont(fontType);
+
+        public static bool NetworkIsPlayerActive(int player)
+            => Function.Call<bool>(NativeHashes["NETWORK_IS_PLAYER_ACTIVE"], player);
     }
 }

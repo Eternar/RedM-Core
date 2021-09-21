@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="eCrimeType.cs" />
+    <Compile Include="eVarStringFlag.cs" />
     <Compile Include="eVehicleSeat.cs" />
     <Compile Include="ePedAttribute.cs" />
     <Compile Include="eCombatAbilityLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VarString.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CitizenFX.Core.Client">
