@@ -95,12 +95,14 @@
             // Graphics
             ["GET_SCREEN_COORD_FROM_WORLD_COORD"] = (Hash)0xCB50D7AFCC8B0EC6,
             ["GET_SCREEN_RESOLUTION"] = (Hash)0x66773C92835D0909,
+            ["SET_SCRIPT_GFX_DRAW_ORDER"] = (Hash)0xCFCC78391C8B3814,
 
             // Hud
             ["_BG_SET_TEXT_COLOR"] = (Hash)0x16FA5CE47F184F1E,
             ["_BG_SET_TEXT_SCALE"] = (Hash)0xA1253A3C870B6843,
             ["_BG_DISPLAY_TEXT"] = (Hash)0x16794E044C9EFB58,
             ["SET_TEXT_FONT"] = (Hash)0x66E0276CC5F6B9DA,
+            ["SET_TEXT_DROPSHADOW"] = (Hash)0x465C84BC39F1C351,
 
             // Misc
             ["VAR_STRING"] = (Hash)0xFA925AC00EB830B9,
@@ -389,5 +391,11 @@
 
         public static float VDIST2(Vector3 firstCoord, Vector3 secondCoord)
             => Function.Call<float>(NativeHashes["VDIST2"], firstCoord.X, firstCoord.Y, firstCoord.Z, secondCoord.X, secondCoord.Y, secondCoord.Z);
+
+        public static void SetTextDropShadow(int distance, int r, int g, int b, int a)
+            => Function.Call(NativeHashes["SET_TEXT_DROPSHADOW"], distance, r, g, b, a);
+
+        public static void SetScriptGfxDrawOrder(int drawOrder)
+            => Function.Call(NativeHashes["SET_SCRIPT_GFX_DRAW_ORDER"], drawOrder);
     }
 }
