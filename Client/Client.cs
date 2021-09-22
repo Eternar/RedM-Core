@@ -104,6 +104,8 @@
 
             // Misc
             ["VAR_STRING"] = (Hash)0xFA925AC00EB830B9,
+            ["VDIST"] = (Hash)0x2A488C176D52CCA5,
+            ["VDIST2"] = (Hash)0xB7A628320EFF8E47
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -375,5 +377,11 @@
 
         public static bool DoesEntityExists(int entity)
             => Function.Call<bool>(NativeHashes["DOES_ENTITY_EXIST"], entity);
+
+        public static float VDIST(float x1, float y1, float z1, float x2, float y2, float z2)
+            => Function.Call<float>(NativeHashes["VDIST"], x1, y1, z1, x2, y2, z2);
+
+        public static float VDIST2(float x1, float y1, float z1, float x2, float y2, float z2)
+            => Function.Call<float>(NativeHashes["VDIST2"], x1, y1, z1, x2, y2, z2);
     }
 }
