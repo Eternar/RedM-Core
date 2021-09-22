@@ -381,7 +381,13 @@
         public static float VDIST(float x1, float y1, float z1, float x2, float y2, float z2)
             => Function.Call<float>(NativeHashes["VDIST"], x1, y1, z1, x2, y2, z2);
 
+        public static float VDIST(Vector3 firstCoord, Vector3 secondCoord)
+            => Function.Call<float>(NativeHashes["VDIST"], firstCoord.X, firstCoord.Y, firstCoord.Z, secondCoord.X, secondCoord.Y, secondCoord.Z);
+
         public static float VDIST2(float x1, float y1, float z1, float x2, float y2, float z2)
             => Function.Call<float>(NativeHashes["VDIST2"], x1, y1, z1, x2, y2, z2);
+
+        public static float VDIST2(Vector3 firstCoord, Vector3 secondCoord)
+            => Function.Call<float>(NativeHashes["VDIST2"], firstCoord.X, firstCoord.Y, firstCoord.Z, secondCoord.X, secondCoord.Y, secondCoord.Z);
     }
 }
