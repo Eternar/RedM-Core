@@ -63,6 +63,7 @@
             ["SET_ENTITY_VELOCITY"] = (Hash)0x1C99BB7B6E96D16F,
             ["SET_ENTITY_INVINCIBLE"] = (Hash)0xA5C38736C426FCB8,
             ["IS_ENTITY_ON_SCREEN"] = (Hash)0x613C15D5D8DB781F,
+            ["HAS_ENTITY_CLEAR_LOS_TO_ENTITY"] = (Hash)0xFCDFF7B72D23A1AC,
 
             ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
@@ -367,5 +368,8 @@
 
         public static string GetPlayerName(int player)
             => Function.Call<string>(NativeHashes["GET_PLAYER_NAME"], player);
+
+        public static bool HasEntityClearLosToEntity(int entity, int targetEntity, int traceType)
+            => Function.Call<bool>(NativeHashes["HAS_ENTITY_CLEAR_LOS_TO_ENTITY"], entity, targetEntity, traceType);
     }
 }
