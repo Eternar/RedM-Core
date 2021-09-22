@@ -98,6 +98,7 @@
             ["_BG_SET_TEXT_COLOR"] = (Hash)0x16FA5CE47F184F1E,
             ["_BG_SET_TEXT_SCALE"] = (Hash)0xA1253A3C870B6843,
             ["_BG_DISPLAY_TEXT"] = (Hash)0x16794E044C9EFB58,
+            ["SET_TEXT_FONT"] = (Hash)0x66E0276CC5F6B9DA,
 
             // Misc
             ["VAR_STRING"] = (Hash)0xFA925AC00EB830B9,
@@ -358,8 +359,8 @@
         public static void SetTextCentre(bool align)
             => API.SetTextCentre(align);
 
-        public static void SetTextFontForCurrentCommand(int fontType)
-            => Function.Call((Hash)0x66E0276CC5F6B9DA, fontType);
+        public static void SetTextFont(int fontType)
+            => Function.Call(NativeHashes["SET_TEXT_FONT"], fontType);
 
         public static bool NetworkIsPlayerActive(int player)
             => Function.Call<bool>(NativeHashes["NETWORK_IS_PLAYER_ACTIVE"], player);
