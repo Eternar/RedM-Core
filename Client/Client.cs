@@ -127,7 +127,9 @@
         public static unsafe bool GetGroundZFor_3dCoord(Vector3 coords, ref float groundz)
         {
             OutputArgument outZ = new OutputArgument();
+
             bool result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, outZ);
+
             groundz = outZ.GetResult<float>();
             return result;
         }
@@ -135,6 +137,7 @@
         public static unsafe bool GetGroundZFor_3dCoord(float x, float y, float z, ref float groundz)
         {
             OutputArgument outZ = new OutputArgument();
+
             bool result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], x, y, z, outZ);
 
             groundz = outZ.GetResult<float>();
@@ -356,7 +359,7 @@
             => API.SetTextCentre(align);
 
         public static void SetTextFontForCurrentCommand(int fontType)
-            => API.SetTextFont(fontType);
+            => Function.Call((Hash)0x66E0276CC5F6B9DA, fontType);
 
         public static bool NetworkIsPlayerActive(int player)
             => Function.Call<bool>(NativeHashes["NETWORK_IS_PLAYER_ACTIVE"], player);
