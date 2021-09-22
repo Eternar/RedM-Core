@@ -1,6 +1,7 @@
 ﻿namespace Eternar.Core.Natives
 {
     using System.Collections.Generic;
+    using System.Security;
 
     using CitizenFX.Core;
     using CitizenFX.Core.Native;
@@ -123,52 +124,44 @@
         public static Vector3 GetWaypointCoords()
             => Function.Call<Vector3>(NativeHashes["_GET_WAYPOINT_COORDS"]);
 
-        public static bool GetGroundZFor_3dCoord(Vector3 coords, ref float groundz)
-            => Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, groundz);
-
-        public static bool GetGroundZFor_3dCoord(float x, float y, float z, ref float groundz)
+        public static unsafe bool GetGroundZFor_3dCoord(Vector3 coords, ref float groundz)
         {
-            float refZ = 0.0f;
-            bool result = false;
-
-            unsafe
-            {
-                result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], x, y, z, &refZ);
-            }
-
-            groundz = refZ;
+            OutputArgument outZ = new OutputArgument();
+            bool result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, outZ);
+            groundz = outZ.GetResult<float>();
             return result;
         }
 
-        public static bool GetGroundZ_AndNormal_For_3dCoord(Vector3 coords, ref float groundz, ref Vector3 normal)
+        public static unsafe bool GetGroundZFor_3dCoord(float x, float y, float z, ref float groundz)
         {
-            Vector3 refNormal = Vector3.Zero;
-            float refZ = 0.0f;
-            bool result = false;
+            OutputArgument outZ = new OutputArgument();
+            bool result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_FOR_3D_COORD"], x, y, z, outZ);
 
-            unsafe
-            {
-                result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, &refZ, &refNormal);
-            }
-
-            groundz = refZ;
-            normal = refNormal;
+            groundz = outZ.GetResult<float>();
             return result;
         }
 
-        public static bool GetGroundZ_AndNormal_For_3dCoord(float x, float y, float z, ref float groundz, ref Vector3 normal)
+        public static unsafe bool GetGroundZ_AndNormal_For_3dCoord(Vector3 coords, ref float groundz, ref Vector3 normal)
         {
-            Vector3 refNormal = Vector3.Zero;
-            float refZ = 0.0f;
-            bool result = false;
+            OutputArgument outNormal = new OutputArgument();
+            OutputArgument outZ = new OutputArgument();
 
-            unsafe
-            {
-                result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], x, y, z, &refZ, &refNormal);
-            }
+            bool result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], coords.X, coords.Y, coords.Z, outZ, outNormal);
 
-            groundz = refZ;
-            normal = refNormal;
+            groundz = outZ.GetResult<float>();
+            normal = outNormal.GetResult<Vector3>();
+            return result;
+        }
+
+        public static unsafe bool GetGroundZ_AndNormal_For_3dCoord(float x, float y, float z, ref float groundz, ref Vector3 normal)
+        {
+            OutputArgument outNormal = new OutputArgument();
+            OutputArgument outZ = new OutputArgument();
+
+            bool result = Function.Call<bool>(NativeHashes["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"], x, y, z, outZ, outNormal);
+
+            groundz = outZ.GetResult<float>();
+            normal = outNormal.GetResult<Vector3>();
             return result;
         }
 
@@ -324,33 +317,26 @@
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public static void GetScreenResolution(ref int x, ref int y)
+        public static unsafe void GetScreenResolution(ref int x, ref int y)
         {
-            int refX = 0;
-            int refY = 0;
+            OutputArgument outX = new OutputArgument();
+            OutputArgument outY = new OutputArgument();
 
-            unsafe
-            {
-                Function.Call(NativeHashes["GET_SCREEN_RESOLUTION"], &refX, &refY);
-            }
+            Function.Call(NativeHashes["GET_SCREEN_RESOLUTION"], outX, outY);
 
-            x = refX;
-            y = refY;
+            x = outX.GetResult<int>();
+            y = outY.GetResult<int>();
         }
 
-        public static bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY)
+        public static unsafe bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY)
         {
-            float refX = 0.0f;
-            float refY = 0.0f;
-            bool result = false;
+            OutputArgument outX = new OutputArgument();
+            OutputArgument outY = new OutputArgument();
 
-            unsafe
-            {
-                result = Function.Call<bool>(NativeHashes["GET_SCREEN_COORD_FROM_WORLD_COORD"], worldX, worldY, worldZ, &refX, &refY);
-            }
+            bool result = Function.Call<bool>(NativeHashes["GET_SCREEN_COORD_FROM_WORLD_COORD"], worldX, worldY, worldZ, outX, outY);
 
-            screenX = refX;
-            screenY = refY;
+            screenX = outX.GetResult<float>();
+            screenY = outY.GetResult<float>();
             return result;
         }
 
