@@ -104,6 +104,7 @@
             ["_BG_DISPLAY_TEXT"] = (Hash)0x16794E044C9EFB58,
             ["SET_TEXT_FONT"] = (Hash)0x66E0276CC5F6B9DA,
             ["SET_TEXT_DROPSHADOW"] = (Hash)0x465C84BC39F1C351,
+            ["IS_PAUSE_MENU_ACTIVE"] = (Hash)0x535384D6067BA42E,
 
             // Misc
             ["VAR_STRING"] = (Hash)0xFA925AC00EB830B9,
@@ -401,5 +402,8 @@
 
         public static void ClearGpsPlayerWaypoint()
             => Function.Call(NativeHashes["CLEAR_GPS_PLAYER_WAYPOINT"]);
+
+        public static bool IsPauseMenuActive()
+            => Function.Call<bool>(NativeHashes["IS_PAUSE_MENU_ACTIVE"]);
     }
 }
