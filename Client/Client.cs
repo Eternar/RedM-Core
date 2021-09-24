@@ -73,6 +73,7 @@
             ["SET_SUPER_JUMP_THIS_FRAME"] = (Hash)0xB3E9BE963F10C445,
             ["SET_SWIM_MULTIPLIER_FOR_PLAYER"] = (Hash)0xBFCEABDE34DA5085,
             ["PLAYER_ID"] = (Hash)0x217E9DC48139933D,
+            ["PLAYER_PED_ID"] = (Hash)0x096275889B8E0EE0,
             ["GET_PLAYER_PED"] = (Hash)0x275F255ED201B937,
             ["BOOST_PLAYER_HORSE_SPEED_FOR_TIME"] = (Hash)0x09C28F828EE674FA,
             ["GET_PLAYER_NAME"] = (Hash)0x7124FD9AC0E01BA0,
@@ -405,5 +406,8 @@
 
         public static bool IsPauseMenuActive()
             => Function.Call<bool>(NativeHashes["IS_PAUSE_MENU_ACTIVE"]);
+
+        public static int PlayerPedId()
+            => Function.Call<int>(NativeHashes["PLAYER_PED_ID"]);
     }
 }
