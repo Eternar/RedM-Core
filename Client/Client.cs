@@ -83,6 +83,7 @@
 
             // Vehicle
             ["CREATE_VEHICLE"] = (Hash)0xAF35D0D2583051B0,
+            ["DELETE_VEHICLE"] = (Hash)0xE20A909D8C4A70F8,
 
             // Model
             ["SET_MODEL_AS_NO_LONGER_NEEDED"] = (Hash)0x4AD96EF928BD4F9A,
@@ -111,7 +112,10 @@
             // Misc
             ["VAR_STRING"] = (Hash)0xFA925AC00EB830B9,
             ["VDIST"] = (Hash)0x2A488C176D52CCA5,
-            ["VDIST2"] = (Hash)0xB7A628320EFF8E47
+            ["VDIST2"] = (Hash)0xB7A628320EFF8E47,
+
+            // Event
+            ["SUPPRESS_SHOCKING_EVENTS_NEXT_FRAME"] = (Hash)0x84994FAD4E4E4E69,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -420,5 +424,8 @@
             Function.Call(NativeHashes["DELETE_VEHICLE"], vehicle);
             vehicle = outVehicle.GetResult<int>();
         }
+
+        public static void SuppressShockingEventsNextFrame()
+            => Function.Call(NativeHashes["SUPPRESS_SHOCKING_EVENTS_NEXT_FRAME"]);
     }
 }
