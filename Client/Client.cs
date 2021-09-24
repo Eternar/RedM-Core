@@ -66,6 +66,7 @@
             ["IS_ENTITY_ON_SCREEN"] = (Hash)0x613C15D5D8DB781F,
             ["HAS_ENTITY_CLEAR_LOS_TO_ENTITY"] = (Hash)0xFCDFF7B72D23A1AC,
             ["DOES_ENTITY_EXIST"] = (Hash)0xD42BD6EB2E0F1677,
+            ["SET_ENTITY_AS_MISSION_ENTITY"] = (Hash)0xDC19C288082E586E,
 
             ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
@@ -409,5 +410,8 @@
 
         public static int PlayerPedId()
             => Function.Call<int>(NativeHashes["PLAYER_PED_ID"]);
+
+        public static void SetEntityAsMissionEntity(int entity, bool p1, bool p2)
+            => Function.Call(NativeHashes["SET_ENTITY_AS_MISSION_ENTITY"], entity, p1, p2);
     }
 }
