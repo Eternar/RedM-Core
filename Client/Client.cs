@@ -413,5 +413,12 @@
 
         public static void SetEntityAsMissionEntity(int entity, bool p1, bool p2)
             => Function.Call(NativeHashes["SET_ENTITY_AS_MISSION_ENTITY"], entity, p1, p2);
+
+        public static unsafe void DeleteVehicle(ref int vehicle)
+        {
+            OutputArgument outVehicle = new OutputArgument();
+            Function.Call(NativeHashes["DELETE_VEHICLE"], vehicle);
+            vehicle = outVehicle.GetResult<int>();
+        }
     }
 }
