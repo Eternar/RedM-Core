@@ -120,6 +120,7 @@
             // Fire
             ["ADD_EXPLOSION"] = (Hash)0x7D6F58F69DA92530,
             ["ADD_OWNED_EXPLOSION"] = (Hash)0xD84A917A64D4D016,
+            ["ADD_EXPLOSION_WITH_USER_VFX"] = (Hash)0x53BA259F3A67A99E,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -443,5 +444,27 @@
 
         public static void AddOwnedExplosion(float x, float y, float z, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_OWNED_EXPLOSION"], x, y, z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
+        
+        public static void AddExplosionWithUserVfx(Vector3 coords, eExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+            => Function.Call(NativeHashes["ADD_EXPLOSION_WITH_USER_VFX"], coords.X, coords.Y, coords.Z, explosionType, explosionFx, damageScale, isAudible, isInvisible, cameraShake);
+
+        public static void AddExplosionWithUserVfx(float x, float y, float z, eExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+            => Function.Call(NativeHashes["ADD_EXPLOSION_WITH_USER_VFX"], x, y, z, explosionType, explosionFx, damageScale, isAudible, isInvisible, cameraShake);
+
+        public static unsafe bool GetClosestFirePos(ref Vector3 outPosition, float x, float y, float z)
+        {
+            OutputArgument outVector = new OutputArgument();
+            bool result = Function.Call<bool>(NativeHashes["GET_CLOSEST_FIRE_POS"], x, y, z);
+            outPosition = outVector.GetResult<Vector3>();
+            return result;
+        }
+
+        public static unsafe bool GetClosestFirePos(ref Vector3 outPosition, Vector3 coords)
+        {
+            OutputArgument outVector = new OutputArgument();
+            bool result = Function.Call<bool>(NativeHashes["GET_CLOSEST_FIRE_POS"], coords.X, coords.Y, coords.Z);
+            outPosition = outVector.GetResult<Vector3>();
+            return result;
+        }
     }
 }
