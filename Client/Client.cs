@@ -116,6 +116,10 @@
 
             // Event
             ["SUPPRESS_SHOCKING_EVENTS_NEXT_FRAME"] = (Hash)0x84994FAD4E4E4E69,
+
+            // Fire
+            ["ADD_EXPLOSION"] = (Hash)0x7D6F58F69DA92530,
+            ["ADD_OWNED_EXPLOSION"] = (Hash)0xD84A917A64D4D016,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -427,5 +431,17 @@
 
         public static void SuppressShockingEventsNextFrame()
             => Function.Call(NativeHashes["SUPPRESS_SHOCKING_EVENTS_NEXT_FRAME"]);
+
+        public static void AddExplosion(Vector3 coords, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+            => Function.Call(NativeHashes["ADD_EXPLOSION"], coords.X, coords.Y, coords.Z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
+
+        public static void AddExplosion(float x, float y, float z, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+            => Function.Call(NativeHashes["ADD_EXPLOSION"], x, y, z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
+        
+        public static void AddOwnedExplosion(Vector3 coords, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+            => Function.Call(NativeHashes["ADD_OWNED_EXPLOSION"], coords.X, coords.Y, coords.Z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
+
+        public static void AddOwnedExplosion(float x, float y, float z, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+            => Function.Call(NativeHashes["ADD_OWNED_EXPLOSION"], x, y, z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
     }
 }
