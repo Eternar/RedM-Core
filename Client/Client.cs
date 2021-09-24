@@ -45,6 +45,7 @@
             // Map
             ["IS_WAYPOINT_ACTIVE"] = (Hash)0x202B1BBFC6AB5EE4,
             ["_GET_WAYPOINT_COORDS"] = (Hash)0x29B30D07C3F7873B,
+            ["CLEAR_GPS_PLAYER_WAYPOINT"] = (Hash)0x08FDC6F796E350D1,
 
             // World
             ["GET_GROUND_Z_FOR_3D_COORD"] = (Hash)0x24FA4267BB8D2431,
@@ -397,5 +398,8 @@
 
         public static void SetScriptGfxDrawOrder(int drawOrder)
             => Function.Call(NativeHashes["SET_SCRIPT_GFX_DRAW_ORDER"], drawOrder);
+
+        public static void ClearGpsPlayerWaypoint()
+            => Function.Call(NativeHashes["CLEAR_GPS_PLAYER_WAYPOINT"]);
     }
 }
