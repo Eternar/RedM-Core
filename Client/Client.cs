@@ -84,7 +84,16 @@
             // Vehicle
             ["CREATE_VEHICLE"] = (Hash)0xAF35D0D2583051B0,
             ["DELETE_VEHICLE"] = (Hash)0xE20A909D8C4A70F8,
+
             ["_CREATE_MISSION_TRAIN"] = (Hash)0xC239DBD9A57D2A71,
+            ["DELETE_ALL_TRAINS"] = (Hash)0xA3120A1385F17FF7,
+            ["DELETE_MISSION_TRAIN"] = (Hash)0x0D3630FB07E8B570,
+            ["SET_RANDOM_TRAINS"] = (Hash)0x1156C6EE7E82A98A,
+            ["_SET_TRAIN_STOPS_FOR_STATIONS"] = (Hash)0x4182C037AA1F0091,
+
+            ["SET_TRAIN_CRUISE_SPEED"] = (Hash)0x01021EB2E96B793C,
+            ["_SET_TRAIN_MAX_SPEED"] = (Hash)0x9F29999DFDF2AEB8,
+            ["SET_TRAIN_SPEED"] = (Hash)0xDFBA6BBFF7CCAFBB,
 
             // Model
             ["SET_MODEL_AS_NO_LONGER_NEEDED"] = (Hash)0x4AD96EF928BD4F9A,
@@ -509,5 +518,30 @@
 
         public static int CreateTrain(eTrainConfig configHash, Vector3 coords, bool p4, bool passengers, bool p6, bool p7)
             => Function.Call<int>(NativeHashes["_CREATE_MISSION_TRAIN"], configHash, coords.X, coords.Y, coords.Z, p4, passengers, p6, p7);
+
+        public static void DeleteAllTrains()
+            => Function.Call(NativeHashes["DELETE_ALL_TRAINS"]);
+        
+        public static void DeleteAllTrains(ref int trainHandle)
+        {
+            OutputArgument outHandle = new OutputArgument();
+            Function.Call(NativeHashes["DELETE_MISSION_TRAIN"], outHandle);
+            trainHandle = outHandle.GetResult<int>();
+        }
+
+        public static void SetRandomTrains(bool toggle)
+            => Function.Call(NativeHashes["SET_RANDOM_TRAINS"], toggle);
+
+        public static void SetTrainStopsForStations(int train, bool toggle)
+            => Function.Call(NativeHashes["_SET_TRAIN_STOPS_FOR_STATIONS"], train, toggle);
+
+        public static void SetTrainSpeed(int train, float speed)
+            => Function.Call(NativeHashes["SET_TRAIN_SPEED"], train, speed);
+
+        public static void SetTrainMaxSpeed(int train, float speed)
+            => Function.Call(NativeHashes["_SET_TRAIN_MAX_SPEED"], train, speed);
+
+        public static void SetTrainCruiseSpeed(int train, float speed)
+            => Function.Call(NativeHashes["SET_TRAIN_CRUISE_SPEED"], train, speed);
     }
 }
