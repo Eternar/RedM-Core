@@ -84,6 +84,7 @@
             // Vehicle
             ["CREATE_VEHICLE"] = (Hash)0xAF35D0D2583051B0,
             ["DELETE_VEHICLE"] = (Hash)0xE20A909D8C4A70F8,
+            ["_CREATE_MISSION_TRAIN"] = (Hash)0xC239DBD9A57D2A71,
 
             // Model
             ["SET_MODEL_AS_NO_LONGER_NEEDED"] = (Hash)0x4AD96EF928BD4F9A,
@@ -502,5 +503,11 @@
 
         public static bool NetworkIsHost()
             => Function.Call<bool>(NativeHashes["NETWORK_IS_HOST"]);
+
+        public static int CreateTrain(eTrainConfig configHash, float x, float y, float z, bool p4, bool passengers, bool p6, bool p7)
+            => Function.Call<int>(NativeHashes["_CREATE_MISSION_TRAIN"], configHash, x, y, z, p4, passengers, p6, p7);
+
+        public static int CreateTrain(eTrainConfig configHash, Vector3 coords, bool p4, bool passengers, bool p6, bool p7)
+            => Function.Call<int>(NativeHashes["_CREATE_MISSION_TRAIN"], configHash, coords.X, coords.Y, coords.Z, p4, passengers, p6, p7);
     }
 }
