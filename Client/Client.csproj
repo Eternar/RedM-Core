@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="eKnockOffVehicle.cs" />
     <Compile Include="eCrimeType.cs" />
     <Compile Include="eTrainModels.cs" />
     <Compile Include="eVarStringFlag.cs" />

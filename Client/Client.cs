@@ -32,6 +32,9 @@
             ["GET_VEHICLE_PED_IS_IN"] = (Hash)0x9A9112A0FE9A4713,
             ["GET_VEHICLE_PED_IS_ENTERING"] = (Hash)0xF92691AED837A5FC,
             ["GET_VEHICLE_PED_IS_USING"] = (Hash)0x6094AD011A2EA87D,
+            ["GET_PED_IN_VEHICLE_SEAT"] = (Hash)0xBB40DD2270B65366,
+            ["SET_BLOCKING_OF_NON_TEMPORARY_EVENTS"] = (Hash)0x9F8AA94D6D97DBF4,
+            ["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"] = (Hash)0x7A6535691B477C48,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -94,6 +97,8 @@
             ["SET_TRAIN_CRUISE_SPEED"] = (Hash)0x01021EB2E96B793C,
             ["_SET_TRAIN_MAX_SPEED"] = (Hash)0x9F29999DFDF2AEB8,
             ["SET_TRAIN_SPEED"] = (Hash)0xDFBA6BBFF7CCAFBB,
+
+            ["SET_VEHICLE_CAN_BE_TARGETTED"] = (Hash)0x05254BA0B44ADC16,
 
             // Model
             ["SET_MODEL_AS_NO_LONGER_NEEDED"] = (Hash)0x4AD96EF928BD4F9A,
@@ -584,5 +589,17 @@
 
         public static void SetBlipSprite(int blip, uint hash, bool p2)
             => Function.Call(NativeHashes["SET_BLIP_SPRITE"], blip, hash, p2);
+
+        public static int GetPedInVehicleSeat(int vehicle, eVehicleSeat seat)
+            => Function.Call<int>(NativeHashes["GET_PED_IN_VEHICLE_SEAT"], vehicle, seat);
+
+        public static void SetBlockingOfNonTemporaryEvents(int ped, bool toggle)
+            => Function.Call(NativeHashes["SET_BLOCKING_OF_NON_TEMPORARY_EVENTS"], ped, toggle);
+
+        public static void SetPedCanBeKnockedOffVehicle(int ped, eKnockOffVehicle state)
+            => Function.Call(NativeHashes["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"], ped, state);
+
+        public static void SetVehicleCanBeTargetted(int vehicle, bool state)
+            => Function.Call(NativeHashes["SET_VEHICLE_CAN_BE_TARGETTED"], vehicle, state);
     }
 }
