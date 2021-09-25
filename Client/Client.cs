@@ -148,6 +148,11 @@
             ["BLIP_ADD_FOR_COORDS"] = (Hash)0x554D9D53F696D002,
             ["BLIP_ADD_FOR_ENTITY"] = (Hash)0x23F74C2FDA6E7C61,
             ["BLIP_ADD_FOR_RADIUS"] = (Hash)0x45F13B7E0A15C880,
+
+            ["REMOVE_BLIP"] = (Hash)0xF2C3C9DA47AAA54A,
+            ["SET_BLIP_ROTATION"] = (Hash)0x6049966A94FBE706,
+            ["SET_BLIP_SCALE"] = (Hash)0xD38744167B2FA257,
+            ["SET_BLIP_SPRITE"] = (Hash)0x74F74D3207ED525C,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -563,5 +568,21 @@
 
         public static int AddBlipForEntity(uint hash, int entity)
             => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_ENTITY"], hash, entity);
+
+        public static void RemoveBlip(ref int blip)
+        {
+            OutputArgument outBlip = new OutputArgument();
+            Function.Call(NativeHashes["REMOVE_BLIP"], outBlip);
+            blip = outBlip.GetResult<int>();
+        }
+
+        public static void SetBlipRotation(int blip, int rotation)
+            => Function.Call(NativeHashes["SET_BLIP_ROTATION"], blip, rotation);
+
+        public static void SetBlipScale(int blip, float scale)
+            => Function.Call(NativeHashes["SET_BLIP_SCALE"], blip, scale);
+
+        public static void SetBlipSprite(int blip, uint hash, bool p2)
+            => Function.Call(NativeHashes["SET_BLIP_SPRITE"], blip, hash, p2);
     }
 }
