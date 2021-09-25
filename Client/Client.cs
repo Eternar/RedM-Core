@@ -127,6 +127,10 @@
             ["NET_TO_ENT"] = (Hash)0x367B936610BA360C,
             ["NET_TO_OBJ"] = (Hash)0xD8515F5FEA14CB3F,
             ["NET_TO_PED"] = (Hash)0xBDCD95FC216A8B3E,
+
+            ["PED_TO_NET"] = (Hash)0x0EDEC3C276198689,
+            ["OBJ_TO_NET"] = (Hash)0x99BFDC94A603E541,
+            ["VEH_TO_NET"] = (Hash)0xB4C94523F023419C,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -484,5 +488,14 @@
         
         public static int NetToPed(int netHandle)
             => Function.Call<int>(NativeHashes["NET_TO_PED"], netHandle);
+
+        public static int VehToNet(int vehicle)
+            => Function.Call<int>(NativeHashes["VEH_TO_NET"], vehicle);
+        
+        public static int ObjToNet(int vehicle)
+            => Function.Call<int>(NativeHashes["OBJ_TO_NET"], vehicle);
+
+        public static int PedToNet(int vehicle)
+            => Function.Call<int>(NativeHashes["PED_TO_NET"], vehicle);
     }
 }
