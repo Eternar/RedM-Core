@@ -143,6 +143,11 @@
             ["VEH_TO_NET"] = (Hash)0xB4C94523F023419C,
 
             ["NETWORK_IS_HOST"] = (Hash)0x8DB296B814EDDA07,
+
+            // Map
+            ["BLIP_ADD_FOR_COORDS"] = (Hash)0x554D9D53F696D002,
+            ["BLIP_ADD_FOR_ENTITY"] = (Hash)0x23F74C2FDA6E7C61,
+            ["BLIP_ADD_FOR_RADIUS"] = (Hash)0x45F13B7E0A15C880,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -543,5 +548,20 @@
 
         public static void SetTrainCruiseSpeed(int train, float speed)
             => Function.Call(NativeHashes["SET_TRAIN_CRUISE_SPEED"], train, speed);
+
+        public static void AddBlipForCoords(uint hash, float x, float y, float z)
+            => Function.Call(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, x, y, z);
+
+        public static void AddBlipForCoords(uint hash, Vector3 coords)
+            => Function.Call(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, coords.X, coords.Y, coords.Z);
+
+        public static void AddBlipForRadius(uint hash, float x, float y, float z, float radius)
+            => Function.Call(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, x, y, z, radius);
+
+        public static void AddBlipForRadius(uint hash, Vector3 coords, float radius)
+            => Function.Call(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, coords.X, coords.Y, coords.Z, radius);
+
+        public static void AddBlipForEntity(uint hash, int entity)
+            => Function.Call(NativeHashes["BLIP_ADD_FOR_ENTITY"], hash, entity);
     }
 }
