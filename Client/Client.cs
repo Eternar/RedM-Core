@@ -35,6 +35,7 @@
             ["GET_PED_IN_VEHICLE_SEAT"] = (Hash)0xBB40DD2270B65366,
             ["SET_BLOCKING_OF_NON_TEMPORARY_EVENTS"] = (Hash)0x9F8AA94D6D97DBF4,
             ["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"] = (Hash)0x7A6535691B477C48,
+            ["CLEAR_PED_TASKS_IMMEDIATELY"] = (Hash)0xAAA34F8A7CB32098,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -588,7 +589,7 @@
         public static void SetBlipScale(int blip, float scale)
             => Function.Call(NativeHashes["SET_BLIP_SCALE"], blip, scale);
 
-        public static void SetBlipSprite(int blip, uint hash, bool p2)
+        public static void SetBlipSprite(int blip, int hash, bool p2)
             => Function.Call(NativeHashes["SET_BLIP_SPRITE"], blip, hash, p2);
 
         public static void SetBlipName(int blip, VarString name)
@@ -605,5 +606,8 @@
 
         public static void SetVehicleCanBeTargetted(int vehicle, bool state)
             => Function.Call(NativeHashes["SET_VEHICLE_CAN_BE_TARGETTED"], vehicle, state);
+
+        public static void ClearPedTasksImmediately(int ped, bool p1, bool p2)
+            => Function.Call(NativeHashes["CLEAR_PED_TASKS_IMMEDIATELY"], ped, p1, p2);
     }
 }
