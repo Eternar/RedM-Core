@@ -549,19 +549,19 @@
         public static void SetTrainCruiseSpeed(int train, float speed)
             => Function.Call(NativeHashes["SET_TRAIN_CRUISE_SPEED"], train, speed);
 
-        public static void AddBlipForCoords(uint hash, float x, float y, float z)
-            => Function.Call(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, x, y, z);
+        public static int AddBlipForCoords(uint hash, float x, float y, float z)
+            => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, x, y, z);
 
-        public static void AddBlipForCoords(uint hash, Vector3 coords)
-            => Function.Call(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, coords.X, coords.Y, coords.Z);
+        public static int AddBlipForCoords(uint hash, Vector3 coords)
+            => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, coords.X, coords.Y, coords.Z);
 
-        public static void AddBlipForRadius(uint hash, float x, float y, float z, float radius)
-            => Function.Call(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, x, y, z, radius);
+        public static int AddBlipForRadius(uint hash, float x, float y, float z, float radius)
+            => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, x, y, z, radius);
 
-        public static void AddBlipForRadius(uint hash, Vector3 coords, float radius)
-            => Function.Call(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, coords.X, coords.Y, coords.Z, radius);
+        public static int AddBlipForRadius(uint hash, Vector3 coords, float radius)
+            => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, coords.X, coords.Y, coords.Z, radius);
 
-        public static void AddBlipForEntity(uint hash, int entity)
-            => Function.Call(NativeHashes["BLIP_ADD_FOR_ENTITY"], hash, entity);
+        public static int AddBlipForEntity(uint hash, int entity)
+            => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_ENTITY"], hash, entity);
     }
 }
