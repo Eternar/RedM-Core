@@ -1,6 +1,6 @@
 ﻿namespace Eternar.Core.Natives
 {
-	public enum eTrainConfig : uint
+	public enum eTrainModels : uint
 	{
 		appleseed_config = 0x8EAC625C,
 		bountyhunter_config = 0xF9B038FC,

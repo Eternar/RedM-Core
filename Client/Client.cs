@@ -523,16 +523,16 @@
         public static bool NetworkIsHost()
             => Function.Call<bool>(NativeHashes["NETWORK_IS_HOST"]);
 
-        public static int CreateTrain(eTrainConfig configHash, float x, float y, float z, bool p4, bool passengers, bool p6, bool p7)
+        public static int CreateTrain(eTrainModels configHash, float x, float y, float z, bool p4, bool passengers, bool p6, bool p7)
             => Function.Call<int>(NativeHashes["_CREATE_MISSION_TRAIN"], configHash, x, y, z, p4, passengers, p6, p7);
 
-        public static int CreateTrain(eTrainConfig configHash, Vector3 coords, bool p4, bool passengers, bool p6, bool p7)
+        public static int CreateTrain(eTrainModels configHash, Vector3 coords, bool p4, bool passengers, bool p6, bool p7)
             => Function.Call<int>(NativeHashes["_CREATE_MISSION_TRAIN"], configHash, coords.X, coords.Y, coords.Z, p4, passengers, p6, p7);
 
         public static void DeleteAllTrains()
             => Function.Call(NativeHashes["DELETE_ALL_TRAINS"]);
         
-        public static void DeleteAllTrains(ref int trainHandle)
+        public static void DeleteMisionTrain(ref int trainHandle)
         {
             OutputArgument outHandle = new OutputArgument();
             Function.Call(NativeHashes["DELETE_MISSION_TRAIN"], outHandle);
