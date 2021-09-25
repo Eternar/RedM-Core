@@ -158,6 +158,7 @@
             ["SET_BLIP_ROTATION"] = (Hash)0x6049966A94FBE706,
             ["SET_BLIP_SCALE"] = (Hash)0xD38744167B2FA257,
             ["SET_BLIP_SPRITE"] = (Hash)0x74F74D3207ED525C,
+            ["_SET_BLIP_NAME_FROM_PLAYER_STRING"] = (Hash)0x9CB1A1623062F402,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -589,6 +590,9 @@
 
         public static void SetBlipSprite(int blip, uint hash, bool p2)
             => Function.Call(NativeHashes["SET_BLIP_SPRITE"], blip, hash, p2);
+
+        public static void SetBlipName(int blip, VarString name)
+            => Function.Call(NativeHashes["_SET_BLIP_NAME_FROM_PLAYER_STRING"], blip, name.Text);
 
         public static int GetPedInVehicleSeat(int vehicle, eVehicleSeat seat)
             => Function.Call<int>(NativeHashes["GET_PED_IN_VEHICLE_SEAT"], vehicle, seat);
