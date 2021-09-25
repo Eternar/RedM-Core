@@ -131,6 +131,8 @@
             ["PED_TO_NET"] = (Hash)0x0EDEC3C276198689,
             ["OBJ_TO_NET"] = (Hash)0x99BFDC94A603E541,
             ["VEH_TO_NET"] = (Hash)0xB4C94523F023419C,
+
+            ["NETWORK_IS_HOST"] = (Hash)0x8DB296B814EDDA07,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -497,5 +499,8 @@
 
         public static int PedToNet(int vehicle)
             => Function.Call<int>(NativeHashes["PED_TO_NET"], vehicle);
+
+        public static bool NetworkIsHost()
+            => Function.Call<bool>(NativeHashes["NETWORK_IS_HOST"]);
     }
 }
