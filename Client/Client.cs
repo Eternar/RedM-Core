@@ -121,6 +121,12 @@
             ["ADD_EXPLOSION"] = (Hash)0x7D6F58F69DA92530,
             ["ADD_OWNED_EXPLOSION"] = (Hash)0xD84A917A64D4D016,
             ["ADD_EXPLOSION_WITH_USER_VFX"] = (Hash)0x53BA259F3A67A99E,
+
+            // Networking
+            ["NET_TO_VEH"] = (Hash)0xBFFEAB45A9A9094A,
+            ["NET_TO_ENT"] = (Hash)0x367B936610BA360C,
+            ["NET_TO_OBJ"] = (Hash)0xD8515F5FEA14CB3F,
+            ["NET_TO_PED"] = (Hash)0xBDCD95FC216A8B3E,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -466,5 +472,17 @@
             outPosition = outVector.GetResult<Vector3>();
             return result;
         }
+
+        public static int NetToVeh(int netHandle)
+            => Function.Call<int>(NativeHashes["NET_TO_VEH"], netHandle);
+        
+        public static int NetToEnt(int netHandle)
+            => Function.Call<int>(NativeHashes["NET_TO_ENT"], netHandle);
+        
+        public static int NetToObj(int netHandle)
+            => Function.Call<int>(NativeHashes["NET_TO_OBJ"], netHandle);
+        
+        public static int NetToPed(int netHandle)
+            => Function.Call<int>(NativeHashes["NET_TO_PED"], netHandle);
     }
 }
