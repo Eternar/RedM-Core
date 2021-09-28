@@ -59,10 +59,13 @@
             ["PLACE_ENTITY_ON_GROUND_PROPERLY"] = (Hash)0x9587913B9E772D29,
             ["GET_ENTITY_HEIGHT_ABOVE_GROUND"] = (Hash)0x0D3B5BAEA08F63E9,
             ["GET_ENTITY_COORDS"] = (Hash)0xA86D5F069399F44D,
+            ["SET_ENTITY_COORDS"] = (Hash)0x06843DA7060A026B,
             ["GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS"] = (Hash)0x1899F328B0E12848,
             ["SET_ENTITY_COORDS_NO_OFFSET"] = (Hash)0x239A3351AC1DA385,
             ["SET_ENTITY_HEADING"] = (Hash)0xCF2B9C0645C4651B,
             ["GET_ENTITY_HEADING"] = (Hash)0xC230DD956E2F5507,
+            ["GET_ENTITY_ROTATION"] = (Hash)0xE09CAF86C32CB48F,
+            ["SET_ENTITY_ROTATION"] = (Hash)0x9CC8314DFEDE441E,
             ["GET_ENTITY_VELOCITY"] = (Hash)0x4805D2B1D8CF94A9,
             ["SET_ENTITY_VELOCITY"] = (Hash)0x1C99BB7B6E96D16F,
             ["SET_ENTITY_INVINCIBLE"] = (Hash)0xA5C38736C426FCB8,
@@ -70,6 +73,7 @@
             ["HAS_ENTITY_CLEAR_LOS_TO_ENTITY"] = (Hash)0xFCDFF7B72D23A1AC,
             ["DOES_ENTITY_EXIST"] = (Hash)0xD42BD6EB2E0F1677,
             ["SET_ENTITY_AS_MISSION_ENTITY"] = (Hash)0xDC19C288082E586E,
+            ["DELETE_ENTITY"] = (Hash)0x4CD38C78BD19A497,
 
             ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
@@ -178,8 +182,8 @@
         public static void ApplyDamageToPed(int ped, int damage, bool armorFirst)
             => Function.Call(NativeHashes["APPLY_DAMAGE_TO_PED"], ped, damage, armorFirst);
 
-        public static Blip GetBlipFromEntity(int entity)
-            => new Blip(Function.Call<int>(NativeHashes["GET_BLIP_FROM_ENTITY"], entity));
+        public static int GetBlipFromEntity(int entity)
+            => Function.Call<int>(NativeHashes["GET_BLIP_FROM_ENTITY"], entity);
 
         public static Vector3 GetBlipCoords(int handle)
             => Function.Call<Vector3>(NativeHashes["GET_BLIP_COORDS"], handle);
@@ -646,5 +650,27 @@
 
         public static void DoScreenFadeOut(int duration)
             => Function.Call(NativeHashes["DO_SCREEN_FADE_OUT"], duration);
+
+        public static void SetEntityCoords(int entity, float xPos, float yPos, float zPos, bool xAxis, bool yAxis, bool zAxis, bool clearArea)
+            => Function.Call(NativeHashes["SET_ENTITY_COORDS"], entity, xPos, yPos, zPos, xAxis, yAxis, zAxis, clearArea);
+
+        public static void SetEntityCoords(int entity, Vector3 pos, bool xAxis, bool yAxis, bool zAxis, bool clearArea)
+            => Function.Call(NativeHashes["SET_ENTITY_COORDS"], entity, pos.X, pos.Y, pos.Z, xAxis, yAxis, zAxis, clearArea);
+
+        public static Vector3 GetEntityRotation(int entity, int rotationOrder)
+            => Function.Call<Vector3>(NativeHashes["GET_ENTITY_ROTATION"], entity, rotationOrder);
+
+        public static void SetEntityRotation(int entity, float pitch, float roll, float yaw, int rotationOrder, bool p5)
+            => Function.Call(NativeHashes["SET_ENTITY_ROTATION"], entity, pitch, roll, yaw, rotationOrder, p5);
+
+        public static void DeleteEntity(ref int entity)
+        {
+            OutputArgument outEnt = new OutputArgument();
+            Function.Call(NativeHashes["DELETE_ENTITY"], outEnt);
+            entity = outEnt.GetResult<int>();
+        }
+
+        public static void DeleteEntity(int entity)
+            => Function.Call(NativeHashes["DELETE_ENTITY"], entity);
     }
 }

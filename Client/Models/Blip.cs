@@ -58,6 +58,20 @@
         public bool IsOnMinimap
             => Natives.IsBlipOnMinimap(this.Handle);
 
+        /// <summary>
+        /// Gets this blip position.
+        /// </summary>
+        public Vector2 Position
+            => (Vector2)Natives.GetBlipCoords(this.Handle);
+
+        /// <summary>
+        /// Gets a blip from the given entity.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
+        /// <returns></returns>
+        public static Blip GetFromEntity(Entity entity)
+            => entity.Blip;
+
         public override bool Exists()
             => Natives.DoesBlipExists(this.Handle);
 

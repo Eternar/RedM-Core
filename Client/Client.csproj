@@ -55,6 +55,7 @@
     <Compile Include="Enums\BlipType.cs" />
     <Compile Include="Enums\BlipSprite.cs" />
     <Compile Include="Interfaces\IElement.cs" />
+    <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Screen.cs" />
     <Compile Include="Models\Blip.cs" />
     <Compile Include="Natives.cs" />
