@@ -291,7 +291,7 @@
         public static float GetPedMaxStamina(int ped)
             => Function.Call<float>(NativeHashes["_GET_PED_MAX_STAMINA"], ped);
 
-        public static void SetPedCombatAbility(int ped, eCombatAbilityLevel abilityLevel)
+        public static void SetPedCombatAbility(int ped, CombatAbilityLevel abilityLevel)
             => Function.Call(NativeHashes["SET_PED_COMBAT_ABILITY"], ped, abilityLevel);
 
         public static void SetSuperJumpThisFrame(int player)
@@ -345,7 +345,7 @@
         public static uint GetHashKey(string str)
             => Function.Call<uint>(NativeHashes["GET_HASH_KEY"], str);
 
-        public static void SetPedIntoVehicle(int ped, int vehicle, eVehicleSeat seatIndex)
+        public static void SetPedIntoVehicle(int ped, int vehicle, VehicleSeat seatIndex)
             => Function.Call(NativeHashes["SET_PED_INTO_VEHICLE"], ped, vehicle, seatIndex);
 
         public static void RequestModel(uint hash)
@@ -413,7 +413,7 @@
         }
 
         public static VarString CreateVarString(string text)
-            => Function.Call<long>(NativeHashes["VAR_STRING"], eVarStringFlag.Text, "LITERAL_STRING", text);
+            => Function.Call<long>(NativeHashes["VAR_STRING"], VarStringFlag.Text, "LITERAL_STRING", text);
 
         public static void DisplayText(VarString str, float x, float y)
             => Function.Call(NativeHashes["_BG_DISPLAY_TEXT"], str.Text, x, y);
@@ -482,22 +482,22 @@
         public static void SuppressShockingEventsNextFrame()
             => Function.Call(NativeHashes["SUPPRESS_SHOCKING_EVENTS_NEXT_FRAME"]);
 
-        public static void AddExplosion(Vector3 coords, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+        public static void AddExplosion(Vector3 coords, ExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_EXPLOSION"], coords.X, coords.Y, coords.Z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
 
-        public static void AddExplosion(float x, float y, float z, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+        public static void AddExplosion(float x, float y, float z, ExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_EXPLOSION"], x, y, z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
 
-        public static void AddOwnedExplosion(Vector3 coords, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+        public static void AddOwnedExplosion(Vector3 coords, ExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_OWNED_EXPLOSION"], coords.X, coords.Y, coords.Z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
 
-        public static void AddOwnedExplosion(float x, float y, float z, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+        public static void AddOwnedExplosion(float x, float y, float z, ExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_OWNED_EXPLOSION"], x, y, z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
 
-        public static void AddExplosionWithUserVfx(Vector3 coords, eExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+        public static void AddExplosionWithUserVfx(Vector3 coords, ExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_EXPLOSION_WITH_USER_VFX"], coords.X, coords.Y, coords.Z, explosionType, explosionFx, damageScale, isAudible, isInvisible, cameraShake);
 
-        public static void AddExplosionWithUserVfx(float x, float y, float z, eExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
+        public static void AddExplosionWithUserVfx(float x, float y, float z, ExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_EXPLOSION_WITH_USER_VFX"], x, y, z, explosionType, explosionFx, damageScale, isAudible, isInvisible, cameraShake);
 
         public static unsafe bool GetClosestFirePos(ref Vector3 outPosition, float x, float y, float z)
@@ -540,10 +540,10 @@
         public static bool NetworkIsHost()
             => Function.Call<bool>(NativeHashes["NETWORK_IS_HOST"]);
 
-        public static int CreateTrain(eTrainModels configHash, float x, float y, float z, bool p4, bool passengers, bool p6, bool p7)
+        public static int CreateTrain(TrainModels configHash, float x, float y, float z, bool p4, bool passengers, bool p6, bool p7)
             => Function.Call<int>(NativeHashes["_CREATE_MISSION_TRAIN"], configHash, x, y, z, p4, passengers, p6, p7);
 
-        public static int CreateTrain(eTrainModels configHash, Vector3 coords, bool p4, bool passengers, bool p6, bool p7)
+        public static int CreateTrain(TrainModels configHash, Vector3 coords, bool p4, bool passengers, bool p6, bool p7)
             => Function.Call<int>(NativeHashes["_CREATE_MISSION_TRAIN"], configHash, coords.X, coords.Y, coords.Z, p4, passengers, p6, p7);
 
         public static void DeleteAllTrains()
@@ -608,13 +608,13 @@
         public static void SetBlipName(int blip, VarString name)
             => Function.Call(NativeHashes["_SET_BLIP_NAME_FROM_PLAYER_STRING"], blip, name.Text);
 
-        public static int GetPedInVehicleSeat(int vehicle, eVehicleSeat seat)
+        public static int GetPedInVehicleSeat(int vehicle, VehicleSeat seat)
             => Function.Call<int>(NativeHashes["GET_PED_IN_VEHICLE_SEAT"], vehicle, seat);
 
         public static void SetBlockingOfNonTemporaryEvents(int ped, bool toggle)
             => Function.Call(NativeHashes["SET_BLOCKING_OF_NON_TEMPORARY_EVENTS"], ped, toggle);
 
-        public static void SetPedCanBeKnockedOffVehicle(int ped, eKnockOffVehicle state)
+        public static void SetPedCanBeKnockedOffVehicle(int ped, KnockOffVehicle state)
             => Function.Call(NativeHashes["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"], ped, state);
 
         public static void SetVehicleCanBeTargetted(int vehicle, bool state)
