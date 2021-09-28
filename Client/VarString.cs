@@ -1,7 +1,5 @@
 ﻿namespace Eternar.Core
 {
-    using static Natives.Natives;
-
     public sealed class VarString
     {
         public long Text { get; internal set; }
@@ -16,6 +14,6 @@
     public static class VarStringExt
     {
         public static VarString ToVarString(this string text)
-            => CreateVarString(text);
+            => Natives.CreateVarString(text);
     }
 }

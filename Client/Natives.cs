@@ -161,6 +161,15 @@
             ["SET_BLIP_FLASHES"] = (Hash)0x0DF2B55F717DDB10,
             ["IS_BLIP_ON_MINIMAP"] = (Hash)0x46534526B9CD2D17,
             ["_SET_BLIP_NAME_FROM_PLAYER_STRING"] = (Hash)0x9CB1A1623062F402,
+
+            // Cam
+            ["IS_SCREEN_FADING_IN"] = (Hash)0x0CECCC63FFA2EF24,
+            ["IS_SCREEN_FADING_OUT"] = (Hash)0x02F39BEFE7B88D00,
+            ["IS_SCREEN_FADED_OUT"] = (Hash)0xF5472C80DF2FF847,
+            ["IS_SCREEN_FADED_IN"] = (Hash)0x37F9A426FBCF4AF2,
+
+            ["DO_SCREEN_FADE_IN"] = (Hash)0x6A053CF596F67DF7,
+            ["DO_SCREEN_FADE_OUT"] = (Hash)0x40C719A5E410B9E4,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -619,5 +628,23 @@
 
         public static bool IsBlipOnMinimap(int handle)
             => Function.Call<bool>(NativeHashes["IS_BLIP_ON_MINIMAP"], handle);
+
+        public static bool IsScreenFadingIn()
+            => Function.Call<bool>(NativeHashes["IS_SCREEN_FADING_IN"]);
+        
+        public static bool IsScreenFadingOut()
+            => Function.Call<bool>(NativeHashes["IS_SCREEN_FADING_OUT"]);
+        
+        public static bool IsScreenFadedOut()
+            => Function.Call<bool>(NativeHashes["IS_SCREEN_FADED_OUT"]);
+
+        public static bool IsScreenFadedIn()
+            => Function.Call<bool>(NativeHashes["IS_SCREEN_FADED_IN"]);
+
+        public static void DoScreenFadeIn(int duration)
+            => Function.Call(NativeHashes["DO_SCREEN_FADE_IN"], duration);
+
+        public static void DoScreenFadeOut(int duration)
+            => Function.Call(NativeHashes["DO_SCREEN_FADE_OUT"], duration);
     }
 }
