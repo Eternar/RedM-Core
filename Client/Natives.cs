@@ -74,6 +74,8 @@
             ["DOES_ENTITY_EXIST"] = (Hash)0xD42BD6EB2E0F1677,
             ["SET_ENTITY_AS_MISSION_ENTITY"] = (Hash)0xDC19C288082E586E,
             ["DELETE_ENTITY"] = (Hash)0x4CD38C78BD19A497,
+            ["IS_ENTITY_DEAD"] = (Hash)0x7D5B1F88E7504BBA,
+            ["GET_ENTITY_TYPE"] = (Hash)0x97F696ACA466B4E0,
 
             ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
@@ -152,6 +154,7 @@
             ["VEH_TO_NET"] = (Hash)0xB4C94523F023419C,
 
             ["NETWORK_IS_HOST"] = (Hash)0x8DB296B814EDDA07,
+            ["NETWORK_GET_ENTITY_FROM_NETWORK_ID"] = (Hash)0xCE4E5D9B0A4FF560,
 
             // Map
             ["BLIP_ADD_FOR_COORDS"] = (Hash)0x554D9D53F696D002,
@@ -672,5 +675,14 @@
 
         public static void DeleteEntity(int entity)
             => Function.Call(NativeHashes["DELETE_ENTITY"], entity);
+
+        public static bool IsEntityDead(int entity)
+            => Function.Call<bool>(NativeHashes["IS_ENTITY_DEAD"], entity);
+
+        public static EntityType GetEntityType(int entity)
+            => Function.Call<EntityType>(NativeHashes["GET_ENTITY_TYPE"], entity);
+
+        public static int NetworkGetEntityFromNetworkId(int netId)
+            => Function.Call<int>(NativeHashes["NETWORK_GET_ENTITY_FROM_NETWORK_ID"], netId);
     }
 }

@@ -9,14 +9,12 @@
         public int Handle { get; protected set; }
 
         protected PoolObject(int handle)
-        {
-            this.Handle = handle;
-        }
+            => this.Handle = handle;
 
         public override ulong NativeValue
         {
-            get { return (ulong)this.Handle; }
-            set { this.Handle = unchecked((int)value); }
+            get => (ulong)this.Handle;
+            set => this.Handle = unchecked((int)value);
         }
 
         public abstract bool Exists();
@@ -24,8 +22,6 @@
         public abstract void Delete();
 
         public void Dispose()
-        {
-            Delete();
-        }
+            => Delete();
     }
 }
