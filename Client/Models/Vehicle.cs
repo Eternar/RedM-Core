@@ -14,6 +14,6 @@
             => base.Exists() && Natives.GetEntityType(this.Handle) == EntityType.Vehicle;
 
         public static bool Exists(Vehicle vehicle)
-            => !ReferenceEquals(vehicle, null) && vehicle.Exists();
+            => vehicle is object && vehicle.Exists();
     }
 }

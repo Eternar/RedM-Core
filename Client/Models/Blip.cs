@@ -79,7 +79,7 @@
             => Natives.RemoveBlip(this.Handle);
 
         public bool Equals(Blip other)
-            => !ReferenceEquals(null, other) && other.Handle == this.Handle;
+            => other is object && other.Handle == this.Handle;
 
         public override bool Equals(object obj)
             => ReferenceEquals(this, obj) || obj is Blip other && Equals(other);

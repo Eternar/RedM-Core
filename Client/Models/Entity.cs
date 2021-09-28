@@ -85,16 +85,16 @@
             => Natives.DeleteEntity(this.Handle);
 
         public bool Equals(Entity entity)
-            => !ReferenceEquals(entity, null) && this.Handle == entity.Handle;
+            => entity is object && this.Handle == entity.Handle;
 
         public override bool Equals(object obj)
-            => !ReferenceEquals(obj, null) && obj.GetType() == GetType() && Equals((Entity)obj);
+            => obj is object && obj.GetType() == GetType() && Equals((Entity)obj);
 
         public override int GetHashCode()
             => this.Handle.GetHashCode();
 
         public static bool operator ==(Entity left, Entity right)
-            => left?.Equals(right) ?? ReferenceEquals(right, null);
+            => left?.Equals(right) ?? right is null;
 
         public static bool operator !=(Entity left, Entity right)
             => !(left == right);

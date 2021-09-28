@@ -9,6 +9,6 @@
             => base.Exists() && Natives.GetEntityType(this.Handle) == EntityType.Object;
 
         public static bool Exists(Prop prop)
-            => !ReferenceEquals(prop, null) && prop.Exists();
+            => prop is object && prop.Exists();
     }
 }

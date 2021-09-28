@@ -35,6 +35,7 @@
             ["SET_BLOCKING_OF_NON_TEMPORARY_EVENTS"] = (Hash)0x9F8AA94D6D97DBF4,
             ["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"] = (Hash)0x7A6535691B477C48,
             ["CLEAR_PED_TASKS_IMMEDIATELY"] = (Hash)0xAAA34F8A7CB32098,
+            ["IS_PED_MALE"] = (Hash)0x6D9F5FAA7488BA46,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -684,5 +685,8 @@
 
         public static int NetworkGetEntityFromNetworkId(int netId)
             => Function.Call<int>(NativeHashes["NETWORK_GET_ENTITY_FROM_NETWORK_ID"], netId);
+
+        public static bool IsPedMale(int ped)
+            => Function.Call<bool>(NativeHashes["IS_PED_MALE"], ped);
     }
 }
