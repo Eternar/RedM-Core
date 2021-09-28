@@ -1,4 +1,4 @@
-﻿namespace Eternar.Core.Natives
+﻿namespace Eternar.Core
 {
     using System.Collections.Generic;
 
@@ -158,6 +158,8 @@
             ["SET_BLIP_ROTATION"] = (Hash)0x6049966A94FBE706,
             ["SET_BLIP_SCALE"] = (Hash)0xD38744167B2FA257,
             ["SET_BLIP_SPRITE"] = (Hash)0x74F74D3207ED525C,
+            ["SET_BLIP_FLASHES"] = (Hash)0x0DF2B55F717DDB10,
+            ["IS_BLIP_ON_MINIMAP"] = (Hash)0x46534526B9CD2D17,
             ["_SET_BLIP_NAME_FROM_PLAYER_STRING"] = (Hash)0x9CB1A1623062F402,
         };
 
@@ -170,11 +172,11 @@
         public static Blip GetBlipFromEntity(int entity)
             => new Blip(Function.Call<int>(NativeHashes["GET_BLIP_FROM_ENTITY"], entity));
 
-        public static Vector3 GetBlipCoords(Blip blip)
-            => Function.Call<Vector3>(NativeHashes["GET_BLIP_COORDS"], blip.Handle);
+        public static Vector3 GetBlipCoords(int handle)
+            => Function.Call<Vector3>(NativeHashes["GET_BLIP_COORDS"], handle);
 
-        public static bool DoesBlipExists(Blip blip)
-            => Function.Call<bool>(NativeHashes["DOES_BLIP_EXIST"], blip.Handle);
+        public static bool DoesBlipExists(int handle)
+            => Function.Call<bool>(NativeHashes["DOES_BLIP_EXIST"], handle);
 
         public static bool IsWaypointActive()
             => Function.Call<bool>(NativeHashes["IS_WAYPOINT_ACTIVE"]);
@@ -476,13 +478,13 @@
 
         public static void AddExplosion(float x, float y, float z, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_EXPLOSION"], x, y, z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
-        
+
         public static void AddOwnedExplosion(Vector3 coords, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_OWNED_EXPLOSION"], coords.X, coords.Y, coords.Z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
 
         public static void AddOwnedExplosion(float x, float y, float z, eExplosionTag explosionType, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_OWNED_EXPLOSION"], x, y, z, explosionType, damageScale, isAudible, isInvisible, cameraShake);
-        
+
         public static void AddExplosionWithUserVfx(Vector3 coords, eExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_EXPLOSION_WITH_USER_VFX"], coords.X, coords.Y, coords.Z, explosionType, explosionFx, damageScale, isAudible, isInvisible, cameraShake);
 
@@ -507,19 +509,19 @@
 
         public static int NetToVeh(int netHandle)
             => Function.Call<int>(NativeHashes["NET_TO_VEH"], netHandle);
-        
+
         public static int NetToEnt(int netHandle)
             => Function.Call<int>(NativeHashes["NET_TO_ENT"], netHandle);
-        
+
         public static int NetToObj(int netHandle)
             => Function.Call<int>(NativeHashes["NET_TO_OBJ"], netHandle);
-        
+
         public static int NetToPed(int netHandle)
             => Function.Call<int>(NativeHashes["NET_TO_PED"], netHandle);
 
         public static int VehToNet(int vehicle)
             => Function.Call<int>(NativeHashes["VEH_TO_NET"], vehicle);
-        
+
         public static int ObjToNet(int vehicle)
             => Function.Call<int>(NativeHashes["OBJ_TO_NET"], vehicle);
 
@@ -537,7 +539,7 @@
 
         public static void DeleteAllTrains()
             => Function.Call(NativeHashes["DELETE_ALL_TRAINS"]);
-        
+
         public static void DeleteMisionTrain(ref int trainHandle)
         {
             OutputArgument outHandle = new OutputArgument();
@@ -582,14 +584,17 @@
             blip = outBlip.GetResult<int>();
         }
 
+        public static void RemoveBlip(int blip)
+            => Function.Call(NativeHashes["REMOVE_BLIP"], blip);
+
         public static void SetBlipRotation(int blip, int rotation)
             => Function.Call(NativeHashes["SET_BLIP_ROTATION"], blip, rotation);
 
         public static void SetBlipScale(int blip, float scale)
             => Function.Call(NativeHashes["SET_BLIP_SCALE"], blip, scale);
 
-        public static void SetBlipSprite(int blip, int hash, bool p2)
-            => Function.Call(NativeHashes["SET_BLIP_SPRITE"], blip, hash, p2);
+        public static void SetBlipSprite(int blip, uint hash)
+            => Function.Call(NativeHashes["SET_BLIP_SPRITE"], blip, hash);
 
         public static void SetBlipName(int blip, VarString name)
             => Function.Call(NativeHashes["_SET_BLIP_NAME_FROM_PLAYER_STRING"], blip, name.Text);
@@ -608,5 +613,11 @@
 
         public static void ClearPedTasksImmediately(int ped, bool p1, bool p2)
             => Function.Call(NativeHashes["CLEAR_PED_TASKS_IMMEDIATELY"], ped, p1, p2);
+
+        public static bool SetBlipFlashes(int handle, bool state)
+            => Function.Call <bool>(NativeHashes["SET_BLIP_FLASHES"], handle, state, 2);
+
+        public static bool IsBlipOnMinimap(int handle)
+            => Function.Call<bool>(NativeHashes["IS_BLIP_ON_MINIMAP"], handle);
     }
 }

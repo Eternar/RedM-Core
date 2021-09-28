@@ -1,4 +1,4 @@
-﻿namespace Eternar.Core.Natives
+﻿namespace Eternar.Core
 {
     public enum eCombatAbilityLevel : int
     {
