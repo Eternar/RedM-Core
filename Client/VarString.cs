@@ -2,7 +2,7 @@
 {
     using static Natives.Natives;
 
-    public class VarString
+    public sealed class VarString
     {
         public long Text { get; internal set; }
 
