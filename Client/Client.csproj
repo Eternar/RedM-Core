@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\FiringPattern.cs" />
     <Compile Include="Enums\EventReaction.cs" />
     <Compile Include="Enums\AnimationFlags.cs" />

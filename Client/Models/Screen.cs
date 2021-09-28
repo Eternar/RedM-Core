@@ -3,7 +3,7 @@
     using CitizenFX.Core;
 
     /// <summary>
-    /// Represents a <see cref="Blip"/>.
+    /// Represents the game <see cref="Screen"/>.
     /// </summary>
     public static class Screen
     {
