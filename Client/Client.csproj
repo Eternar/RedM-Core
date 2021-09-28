@@ -56,6 +56,7 @@
     <Compile Include="Interfaces\IExistable.cs" />
     <Compile Include="Interfaces\ISpatial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PoolObject.cs" />
     <Compile Include="VarString.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,6 @@
 {
     public interface IDeletable : IExistable
     {
-        bool Delete();
+        void Delete();
     }
 }
