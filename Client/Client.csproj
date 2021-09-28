@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\EntityBone.cs" />
     <Compile Include="Enums\BlipType.cs" />
     <Compile Include="Enums\BlipSprite.cs" />
     <Compile Include="Models\Blip.cs" />
