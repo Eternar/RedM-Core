@@ -44,6 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\FiringPattern.cs" />
+    <Compile Include="Enums\EventReaction.cs" />
+    <Compile Include="Enums\AnimationFlags.cs" />
+    <Compile Include="Enums\VehicleDrivingFlags.cs" />
+    <Compile Include="Enums\LeaveVehicleFlags.cs" />
     <Compile Include="Enums\Controls.cs" />
     <Compile Include="Enums\EntityBone.cs" />
     <Compile Include="Enums\BlipType.cs" />
