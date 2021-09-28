@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
+    <Compile Include="Natives.cs" />
     <Compile Include="Enums\eKnockOffVehicle.cs" />
     <Compile Include="Enums\eCrimeType.cs" />
     <Compile Include="Enums\eTrainModels.cs" />
