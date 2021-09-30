@@ -36,6 +36,8 @@
             ["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"] = (Hash)0x7A6535691B477C48,
             ["CLEAR_PED_TASKS_IMMEDIATELY"] = (Hash)0xAAA34F8A7CB32098,
             ["IS_PED_MALE"] = (Hash)0x6D9F5FAA7488BA46,
+            ["_GET_ATTRIBUTE_CORE_VALUE"] = (Hash)0x36731AC041289BB1,
+            ["_SET_ATTRIBUTE_CORE_VALUE"] = (Hash)0xC6258F41D86676E0,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -733,5 +735,11 @@
 
         public static void TaskWhistle(int ped, int p1, int p2)
             => Function.Call(NativeHashes["TASK_WHISTLE_ANIM"], ped, p1, p2);
+
+        public static int GetAttributeCoreValue(int ped, PedAttribute attribute)
+            => Function.Call<int>(NativeHashes["_GET_ATTRIBUTE_CORE_VALUE"], ped, attribute);
+
+        public static void SetAttributeCoreValue(int ped, PedAttribute attribute, int value)
+            => Function.Call(NativeHashes["_SET_ATTRIBUTE_CORE_VALUE"], ped, attribute, value);
     }
 }
