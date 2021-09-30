@@ -201,7 +201,7 @@
         public static Vector3 GetWaypointCoords()
             => Function.Call<Vector3>(NativeHashes["_GET_WAYPOINT_COORDS"]);
 
-        public static unsafe bool GetGroundZFor_3dCoord(Vector3 coords, ref float groundz)
+        public static bool GetGroundZFor_3dCoord(Vector3 coords, ref float groundz)
         {
             OutputArgument outZ = new OutputArgument();
 
@@ -211,7 +211,7 @@
             return result;
         }
 
-        public static unsafe bool GetGroundZFor_3dCoord(float x, float y, float z, ref float groundz)
+        public static bool GetGroundZFor_3dCoord(float x, float y, float z, ref float groundz)
         {
             OutputArgument outZ = new OutputArgument();
 
@@ -221,7 +221,7 @@
             return result;
         }
 
-        public static unsafe bool GetGroundZ_AndNormal_For_3dCoord(Vector3 coords, ref float groundz, ref Vector3 normal)
+        public static bool GetGroundZ_AndNormal_For_3dCoord(Vector3 coords, ref float groundz, ref Vector3 normal)
         {
             OutputArgument outNormal = new OutputArgument();
             OutputArgument outZ = new OutputArgument();
@@ -233,7 +233,7 @@
             return result;
         }
 
-        public static unsafe bool GetGroundZ_AndNormal_For_3dCoord(float x, float y, float z, ref float groundz, ref Vector3 normal)
+        public static bool GetGroundZ_AndNormal_For_3dCoord(float x, float y, float z, ref float groundz, ref Vector3 normal)
         {
             OutputArgument outNormal = new OutputArgument();
             OutputArgument outZ = new OutputArgument();
@@ -392,7 +392,7 @@
         public static bool IsEntityOnScreen(int entity)
             => Function.Call<bool>(NativeHashes["IS_ENTITY_ON_SCREEN"], entity);
 
-        public static unsafe void GetScreenResolution(ref int x, ref int y)
+        public static void GetScreenResolution(ref int x, ref int y)
         {
             OutputArgument outX = new OutputArgument();
             OutputArgument outY = new OutputArgument();
@@ -403,7 +403,7 @@
             y = outY.GetResult<int>();
         }
 
-        public static unsafe bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY)
+        public static bool GetScreenCoordFromWorldCoord(float worldX, float worldY, float worldZ, ref float screenX, ref float screenY)
         {
             OutputArgument outX = new OutputArgument();
             OutputArgument outY = new OutputArgument();
@@ -475,7 +475,7 @@
         public static void SetEntityAsMissionEntity(int entity, bool p1, bool p2)
             => Function.Call(NativeHashes["SET_ENTITY_AS_MISSION_ENTITY"], entity, p1, p2);
 
-        public static unsafe void DeleteVehicle(ref int vehicle)
+        public static void DeleteVehicle(ref int vehicle)
         {
             OutputArgument outVehicle = new OutputArgument();
             Function.Call(NativeHashes["DELETE_VEHICLE"], vehicle);
@@ -503,7 +503,7 @@
         public static void AddExplosionWithUserVfx(float x, float y, float z, ExplosionTag explosionType, uint explosionFx, float damageScale, bool isAudible, bool isInvisible, float cameraShake)
             => Function.Call(NativeHashes["ADD_EXPLOSION_WITH_USER_VFX"], x, y, z, explosionType, explosionFx, damageScale, isAudible, isInvisible, cameraShake);
 
-        public static unsafe bool GetClosestFirePos(ref Vector3 outPosition, float x, float y, float z)
+        public static bool GetClosestFirePos(ref Vector3 outPosition, float x, float y, float z)
         {
             OutputArgument outVector = new OutputArgument();
             bool result = Function.Call<bool>(NativeHashes["GET_CLOSEST_FIRE_POS"], x, y, z);
@@ -511,7 +511,7 @@
             return result;
         }
 
-        public static unsafe bool GetClosestFirePos(ref Vector3 outPosition, Vector3 coords)
+        public static bool GetClosestFirePos(ref Vector3 outPosition, Vector3 coords)
         {
             OutputArgument outVector = new OutputArgument();
             bool result = Function.Call<bool>(NativeHashes["GET_CLOSEST_FIRE_POS"], coords.X, coords.Y, coords.Z);
