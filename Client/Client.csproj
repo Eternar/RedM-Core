@@ -58,6 +58,7 @@
     <Compile Include="Interfaces\IElement.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Ped.cs" />
+    <Compile Include="Models\Tasks.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\Prop.cs" />
     <Compile Include="Models\Screen.cs" />

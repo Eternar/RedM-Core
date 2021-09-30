@@ -187,6 +187,11 @@
 
             ["DO_SCREEN_FADE_IN"] = (Hash)0x6A053CF596F67DF7,
             ["DO_SCREEN_FADE_OUT"] = (Hash)0x40C719A5E410B9E4,
+
+            // Task
+            ["TASK_STAND_STILL"] = (Hash)0x919BE13EED931959,
+            ["TASK_JUMP"] = (Hash)0x0AE4086104E067B1,
+            ["TASK_WHISTLE_ANIM"] = (Hash)0xD6401A1B2F63BED6,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -719,5 +724,14 @@
 
         public static Vector3 GetEntityForwardVector(int entity)
             => Function.Call<Vector3>(NativeHashes["GET_ENTITY_FORWARD_VECTOR"], entity);
+
+        public static void TaskStandStill(int ped, int time)
+            => Function.Call(NativeHashes["TASK_STAND_STILL"], ped, time);
+
+        public static void TaskJump(int ped)
+            => Function.Call(NativeHashes["TASK_JUMP"], ped, false);
+
+        public static void TaskWhistle(int ped, int p1, int p2)
+            => Function.Call(NativeHashes["TASK_WHISTLE_ANIM"], ped, p1, p2);
     }
 }
