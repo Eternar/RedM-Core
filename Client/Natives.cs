@@ -5,190 +5,187 @@
     using CitizenFX.Core;
     using CitizenFX.Core.Native;
 
-    using Hash = System.UInt64;
-    using NativeHash = CitizenFX.Core.Native.Hash;
-
     public static class Natives
     {
-        private static readonly Dictionary<string, NativeHash> NativeHashes = new Dictionary<string, NativeHash>
+        private static readonly Dictionary<string, Hash> NativeHashes = new Dictionary<string, Hash>
         {
             // Weather
-            ["_FORCE_LIGHTNING_FLASH_AT_COORDS"] = (NativeHash)0x67943537D179597C,
+            ["_FORCE_LIGHTNING_FLASH_AT_COORDS"] = (Hash)0x67943537D179597C,
 
             // Ped
-            ["APPLY_DAMAGE_TO_PED"] = (NativeHash)0x697157CED63F18D4,
-            ["IS_PED_FALLING"] = (NativeHash)0xFB92A102F1C4DFA3,
-            ["IS_PED_ON_FOOT"] = (NativeHash)0x01FEE67DB37F59B2,
-            ["CLEAR_PED_BLOOD_DAMAGE"] = (NativeHash)0x8FE22675A5A45817,
-            ["CLEAR_PED_WETNESS"] = (NativeHash)0x9C720776DAA43E7E,
-            ["SET_PED_CAN_BE_TARGETTED"] = (NativeHash)0x63F58F7C80513AAD,
-            ["SET_PED_CAN_RAGDOLL"] = (NativeHash)0xB128377056A54E2A,
-            ["SET_PED_COMBAT_ABILITY"] = (NativeHash)0xC7622C0D36B2FDA8,
-            ["CLEAR_PED_ENV_DIRT"] = (NativeHash)0x6585D955A68452A5,
-            ["_GET_PED_HEIGHT"] = (NativeHash)0x1D491CCF7211FB74,
-            ["_SET_PED_SCALE"] = (NativeHash)0x25ACFC650B65C538,
-            ["IS_PED_STILL"] = (NativeHash)0xAC29253EEF8F0180,
-            ["IS_PED_STOPPED"] = (NativeHash)0x530944F6F4B8A214,
-            ["DISABLE_PED_PAIN_AUDIO"] = (NativeHash)0xA9A41C1E940FB0E8,
-            ["SET_PED_INTO_VEHICLE"] = (NativeHash)0xF75B0D629E1C063D,
-            ["GET_VEHICLE_PED_IS_IN"] = (NativeHash)0x9A9112A0FE9A4713,
-            ["GET_VEHICLE_PED_IS_ENTERING"] = (NativeHash)0xF92691AED837A5FC,
-            ["GET_VEHICLE_PED_IS_USING"] = (NativeHash)0x6094AD011A2EA87D,
-            ["GET_PED_IN_VEHICLE_SEAT"] = (NativeHash)0xBB40DD2270B65366,
-            ["SET_BLOCKING_OF_NON_TEMPORARY_EVENTS"] = (NativeHash)0x9F8AA94D6D97DBF4,
-            ["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"] = (NativeHash)0x7A6535691B477C48,
-            ["CLEAR_PED_TASKS_IMMEDIATELY"] = (NativeHash)0xAAA34F8A7CB32098,
-            ["IS_PED_MALE"] = (NativeHash)0x6D9F5FAA7488BA46,
+            ["APPLY_DAMAGE_TO_PED"] = (Hash)0x697157CED63F18D4,
+            ["IS_PED_FALLING"] = (Hash)0xFB92A102F1C4DFA3,
+            ["IS_PED_ON_FOOT"] = (Hash)0x01FEE67DB37F59B2,
+            ["CLEAR_PED_BLOOD_DAMAGE"] = (Hash)0x8FE22675A5A45817,
+            ["CLEAR_PED_WETNESS"] = (Hash)0x9C720776DAA43E7E,
+            ["SET_PED_CAN_BE_TARGETTED"] = (Hash)0x63F58F7C80513AAD,
+            ["SET_PED_CAN_RAGDOLL"] = (Hash)0xB128377056A54E2A,
+            ["SET_PED_COMBAT_ABILITY"] = (Hash)0xC7622C0D36B2FDA8,
+            ["CLEAR_PED_ENV_DIRT"] = (Hash)0x6585D955A68452A5,
+            ["_GET_PED_HEIGHT"] = (Hash)0x1D491CCF7211FB74,
+            ["_SET_PED_SCALE"] = (Hash)0x25ACFC650B65C538,
+            ["IS_PED_STILL"] = (Hash)0xAC29253EEF8F0180,
+            ["IS_PED_STOPPED"] = (Hash)0x530944F6F4B8A214,
+            ["DISABLE_PED_PAIN_AUDIO"] = (Hash)0xA9A41C1E940FB0E8,
+            ["SET_PED_INTO_VEHICLE"] = (Hash)0xF75B0D629E1C063D,
+            ["GET_VEHICLE_PED_IS_IN"] = (Hash)0x9A9112A0FE9A4713,
+            ["GET_VEHICLE_PED_IS_ENTERING"] = (Hash)0xF92691AED837A5FC,
+            ["GET_VEHICLE_PED_IS_USING"] = (Hash)0x6094AD011A2EA87D,
+            ["GET_PED_IN_VEHICLE_SEAT"] = (Hash)0xBB40DD2270B65366,
+            ["SET_BLOCKING_OF_NON_TEMPORARY_EVENTS"] = (Hash)0x9F8AA94D6D97DBF4,
+            ["SET_PED_CAN_BE_KNOCKED_OFF_VEHICLE"] = (Hash)0x7A6535691B477C48,
+            ["CLEAR_PED_TASKS_IMMEDIATELY"] = (Hash)0xAAA34F8A7CB32098,
+            ["IS_PED_MALE"] = (Hash)0x6D9F5FAA7488BA46,
 
-            ["_RESTORE_PED_STAMINA"] = (NativeHash)0x675680D089BFA21F,
-            ["_GET_PED_MAX_STAMINA"] = (NativeHash)0xCB42AFE2B613EE55,
-            ["_CHANGE_PED_STAMINA"] = (NativeHash)0xC3D4B754C0E86B9E,
+            ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
+            ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
+            ["_CHANGE_PED_STAMINA"] = (Hash)0xC3D4B754C0E86B9E,
 
             // Blip
-            ["GET_BLIP_FROM_ENTITY"] = (NativeHash)0x6D2C41A8BD6D6FD0,
-            ["GET_BLIP_COORDS"] = (NativeHash)0x201C319797BDA603,
-            ["DOES_BLIP_EXIST"] = (NativeHash)0xCD82FA174080B3B1,
+            ["GET_BLIP_FROM_ENTITY"] = (Hash)0x6D2C41A8BD6D6FD0,
+            ["GET_BLIP_COORDS"] = (Hash)0x201C319797BDA603,
+            ["DOES_BLIP_EXIST"] = (Hash)0xCD82FA174080B3B1,
 
             // Map
-            ["IS_WAYPOINT_ACTIVE"] = (NativeHash)0x202B1BBFC6AB5EE4,
-            ["_GET_WAYPOINT_COORDS"] = (NativeHash)0x29B30D07C3F7873B,
-            ["CLEAR_GPS_PLAYER_WAYPOINT"] = (NativeHash)0x08FDC6F796E350D1,
+            ["IS_WAYPOINT_ACTIVE"] = (Hash)0x202B1BBFC6AB5EE4,
+            ["_GET_WAYPOINT_COORDS"] = (Hash)0x29B30D07C3F7873B,
+            ["CLEAR_GPS_PLAYER_WAYPOINT"] = (Hash)0x08FDC6F796E350D1,
 
             // World
-            ["GET_GROUND_Z_FOR_3D_COORD"] = (NativeHash)0x24FA4267BB8D2431,
-            ["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"] = (NativeHash)0x2A29CA9A6319E6AB,
-            ["_GET_HEIGHTMAP_BOTTOM_Z_FOR_POSITION"] = (NativeHash)0x336511A34F2E5185,
+            ["GET_GROUND_Z_FOR_3D_COORD"] = (Hash)0x24FA4267BB8D2431,
+            ["GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD"] = (Hash)0x2A29CA9A6319E6AB,
+            ["_GET_HEIGHTMAP_BOTTOM_Z_FOR_POSITION"] = (Hash)0x336511A34F2E5185,
 
             // Entity
-            ["PLACE_ENTITY_ON_GROUND_PROPERLY"] = (NativeHash)0x9587913B9E772D29,
-            ["GET_ENTITY_HEIGHT_ABOVE_GROUND"] = (NativeHash)0x0D3B5BAEA08F63E9,
-            ["GET_ENTITY_COORDS"] = (NativeHash)0xA86D5F069399F44D,
-            ["SET_ENTITY_COORDS"] = (NativeHash)0x06843DA7060A026B,
-            ["GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS"] = (NativeHash)0x1899F328B0E12848,
-            ["SET_ENTITY_COORDS_NO_OFFSET"] = (NativeHash)0x239A3351AC1DA385,
-            ["SET_ENTITY_HEADING"] = (NativeHash)0xCF2B9C0645C4651B,
-            ["GET_ENTITY_HEADING"] = (NativeHash)0xC230DD956E2F5507,
-            ["GET_ENTITY_ROTATION"] = (NativeHash)0xE09CAF86C32CB48F,
-            ["SET_ENTITY_ROTATION"] = (NativeHash)0x9CC8314DFEDE441E,
-            ["GET_ENTITY_VELOCITY"] = (NativeHash)0x4805D2B1D8CF94A9,
-            ["SET_ENTITY_VELOCITY"] = (NativeHash)0x1C99BB7B6E96D16F,
-            ["SET_ENTITY_INVINCIBLE"] = (NativeHash)0xA5C38736C426FCB8,
-            ["IS_ENTITY_ON_SCREEN"] = (NativeHash)0x613C15D5D8DB781F,
-            ["HAS_ENTITY_CLEAR_LOS_TO_ENTITY"] = (NativeHash)0xFCDFF7B72D23A1AC,
-            ["DOES_ENTITY_EXIST"] = (NativeHash)0xD42BD6EB2E0F1677,
-            ["SET_ENTITY_AS_MISSION_ENTITY"] = (NativeHash)0xDC19C288082E586E,
-            ["DELETE_ENTITY"] = (NativeHash)0x4CD38C78BD19A497,
-            ["IS_ENTITY_DEAD"] = (NativeHash)0x7D5B1F88E7504BBA,
-            ["GET_ENTITY_TYPE"] = (NativeHash)0x97F696ACA466B4E0,
-            ["GET_ENTITY_HEALTH"] = (NativeHash)0x82368787EA73C0F7,
-            ["SET_ENTITY_HEALTH"] = (NativeHash)0xAC2767ED8BDFAB15,
-            ["_GET_ENTITY_HEALTH_FLOAT"] = (NativeHash)0x96C638784DB4C815,
-            ["GET_ENTITY_MAX_HEALTH"] = (NativeHash)0x15D757606D170C3C,
-            ["SET_ENTITY_MAX_HEALTH"] = (NativeHash)0x166E7CF68597D8B5,
-            ["GET_ENTITY_SPEED"] = (NativeHash)0xFB6BA510A533DF81,
-            ["GET_ENTITY_SPEED_VECTOR"] = (NativeHash)0xF2DB09816A419DC5,
-            ["GET_ENTITY_MODEL"] = (NativeHash)0xDA76A9F39210D365,
+            ["PLACE_ENTITY_ON_GROUND_PROPERLY"] = (Hash)0x9587913B9E772D29,
+            ["GET_ENTITY_HEIGHT_ABOVE_GROUND"] = (Hash)0x0D3B5BAEA08F63E9,
+            ["GET_ENTITY_COORDS"] = (Hash)0xA86D5F069399F44D,
+            ["SET_ENTITY_COORDS"] = (Hash)0x06843DA7060A026B,
+            ["GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS"] = (Hash)0x1899F328B0E12848,
+            ["SET_ENTITY_COORDS_NO_OFFSET"] = (Hash)0x239A3351AC1DA385,
+            ["SET_ENTITY_HEADING"] = (Hash)0xCF2B9C0645C4651B,
+            ["GET_ENTITY_HEADING"] = (Hash)0xC230DD956E2F5507,
+            ["GET_ENTITY_ROTATION"] = (Hash)0xE09CAF86C32CB48F,
+            ["SET_ENTITY_ROTATION"] = (Hash)0x9CC8314DFEDE441E,
+            ["GET_ENTITY_VELOCITY"] = (Hash)0x4805D2B1D8CF94A9,
+            ["SET_ENTITY_VELOCITY"] = (Hash)0x1C99BB7B6E96D16F,
+            ["SET_ENTITY_INVINCIBLE"] = (Hash)0xA5C38736C426FCB8,
+            ["IS_ENTITY_ON_SCREEN"] = (Hash)0x613C15D5D8DB781F,
+            ["HAS_ENTITY_CLEAR_LOS_TO_ENTITY"] = (Hash)0xFCDFF7B72D23A1AC,
+            ["DOES_ENTITY_EXIST"] = (Hash)0xD42BD6EB2E0F1677,
+            ["SET_ENTITY_AS_MISSION_ENTITY"] = (Hash)0xDC19C288082E586E,
+            ["DELETE_ENTITY"] = (Hash)0x4CD38C78BD19A497,
+            ["IS_ENTITY_DEAD"] = (Hash)0x7D5B1F88E7504BBA,
+            ["GET_ENTITY_TYPE"] = (Hash)0x97F696ACA466B4E0,
+            ["GET_ENTITY_HEALTH"] = (Hash)0x82368787EA73C0F7,
+            ["SET_ENTITY_HEALTH"] = (Hash)0xAC2767ED8BDFAB15,
+            ["_GET_ENTITY_HEALTH_FLOAT"] = (Hash)0x96C638784DB4C815,
+            ["GET_ENTITY_MAX_HEALTH"] = (Hash)0x15D757606D170C3C,
+            ["SET_ENTITY_MAX_HEALTH"] = (Hash)0x166E7CF68597D8B5,
+            ["GET_ENTITY_SPEED"] = (Hash)0xFB6BA510A533DF81,
+            ["GET_ENTITY_SPEED_VECTOR"] = (Hash)0xF2DB09816A419DC5,
+            ["GET_ENTITY_MODEL"] = (Hash)0xDA76A9F39210D365,
 
-            ["IS_CONTROL_PRESSED"] = (NativeHash)0xF3A21BCD95725A4A,
+            ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
             // Player
-            ["SET_SUPER_JUMP_THIS_FRAME"] = (NativeHash)0xB3E9BE963F10C445,
-            ["SET_SWIM_MULTIPLIER_FOR_PLAYER"] = (NativeHash)0xBFCEABDE34DA5085,
-            ["PLAYER_ID"] = (NativeHash)0x217E9DC48139933D,
-            ["PLAYER_PED_ID"] = (NativeHash)0x096275889B8E0EE0,
-            ["GET_PLAYER_PED"] = (NativeHash)0x275F255ED201B937,
-            ["BOOST_PLAYER_HORSE_SPEED_FOR_TIME"] = (NativeHash)0x09C28F828EE674FA,
-            ["GET_PLAYER_NAME"] = (NativeHash)0x7124FD9AC0E01BA0,
+            ["SET_SUPER_JUMP_THIS_FRAME"] = (Hash)0xB3E9BE963F10C445,
+            ["SET_SWIM_MULTIPLIER_FOR_PLAYER"] = (Hash)0xBFCEABDE34DA5085,
+            ["PLAYER_ID"] = (Hash)0x217E9DC48139933D,
+            ["PLAYER_PED_ID"] = (Hash)0x096275889B8E0EE0,
+            ["GET_PLAYER_PED"] = (Hash)0x275F255ED201B937,
+            ["BOOST_PLAYER_HORSE_SPEED_FOR_TIME"] = (Hash)0x09C28F828EE674FA,
+            ["GET_PLAYER_NAME"] = (Hash)0x7124FD9AC0E01BA0,
 
-            ["NETWORK_IS_PLAYER_ACTIVE"] = (NativeHash)0xB8DFD30D6973E135,
+            ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
             // Vehicle
-            ["CREATE_VEHICLE"] = (NativeHash)0xAF35D0D2583051B0,
-            ["DELETE_VEHICLE"] = (NativeHash)0xE20A909D8C4A70F8,
+            ["CREATE_VEHICLE"] = (Hash)0xAF35D0D2583051B0,
+            ["DELETE_VEHICLE"] = (Hash)0xE20A909D8C4A70F8,
 
-            ["_CREATE_MISSION_TRAIN"] = (NativeHash)0xC239DBD9A57D2A71,
-            ["DELETE_ALL_TRAINS"] = (NativeHash)0xA3120A1385F17FF7,
-            ["DELETE_MISSION_TRAIN"] = (NativeHash)0x0D3630FB07E8B570,
-            ["SET_RANDOM_TRAINS"] = (NativeHash)0x1156C6EE7E82A98A,
-            ["_SET_TRAIN_STOPS_FOR_STATIONS"] = (NativeHash)0x4182C037AA1F0091,
+            ["_CREATE_MISSION_TRAIN"] = (Hash)0xC239DBD9A57D2A71,
+            ["DELETE_ALL_TRAINS"] = (Hash)0xA3120A1385F17FF7,
+            ["DELETE_MISSION_TRAIN"] = (Hash)0x0D3630FB07E8B570,
+            ["SET_RANDOM_TRAINS"] = (Hash)0x1156C6EE7E82A98A,
+            ["_SET_TRAIN_STOPS_FOR_STATIONS"] = (Hash)0x4182C037AA1F0091,
 
-            ["SET_TRAIN_CRUISE_SPEED"] = (NativeHash)0x01021EB2E96B793C,
-            ["_SET_TRAIN_MAX_SPEED"] = (NativeHash)0x9F29999DFDF2AEB8,
-            ["SET_TRAIN_SPEED"] = (NativeHash)0xDFBA6BBFF7CCAFBB,
+            ["SET_TRAIN_CRUISE_SPEED"] = (Hash)0x01021EB2E96B793C,
+            ["_SET_TRAIN_MAX_SPEED"] = (Hash)0x9F29999DFDF2AEB8,
+            ["SET_TRAIN_SPEED"] = (Hash)0xDFBA6BBFF7CCAFBB,
 
-            ["SET_VEHICLE_CAN_BE_TARGETTED"] = (NativeHash)0x05254BA0B44ADC16,
+            ["SET_VEHICLE_CAN_BE_TARGETTED"] = (Hash)0x05254BA0B44ADC16,
 
             // Model
-            ["SET_MODEL_AS_NO_LONGER_NEEDED"] = (NativeHash)0x4AD96EF928BD4F9A,
-            ["REQUEST_MODEL"] = (NativeHash)0xFA28FE3A6246FC30,
-            ["HAS_MODEL_LOADED"] = (NativeHash)0x1283B8B89DD5D1B6,
-            ["IS_MODEL_IN_CDIMAGE"] = (NativeHash)0xD6F3B6D7716CFF8E,
-            ["IS_MODEL_A_VEHICLE"] = (NativeHash)0x354F62672DE7DB0A,
-            ["IS_MODEL_VALID"] = (NativeHash)0x392C8D8E07B70EFC,
-            ["_IS_THIS_MODEL_A_HORSE"] = (NativeHash)0x772A1969F649E902,
+            ["SET_MODEL_AS_NO_LONGER_NEEDED"] = (Hash)0x4AD96EF928BD4F9A,
+            ["REQUEST_MODEL"] = (Hash)0xFA28FE3A6246FC30,
+            ["HAS_MODEL_LOADED"] = (Hash)0x1283B8B89DD5D1B6,
+            ["IS_MODEL_IN_CDIMAGE"] = (Hash)0xD6F3B6D7716CFF8E,
+            ["IS_MODEL_A_VEHICLE"] = (Hash)0x354F62672DE7DB0A,
+            ["IS_MODEL_VALID"] = (Hash)0x392C8D8E07B70EFC,
+            ["_IS_THIS_MODEL_A_HORSE"] = (Hash)0x772A1969F649E902,
 
-            ["GET_HASH_KEY"] = (NativeHash)0xFD340785ADF8CFB7,
+            ["GET_HASH_KEY"] = (Hash)0xFD340785ADF8CFB7,
 
             // Graphics
-            ["GET_SCREEN_COORD_FROM_WORLD_COORD"] = (NativeHash)0xCB50D7AFCC8B0EC6,
-            ["GET_SCREEN_RESOLUTION"] = (NativeHash)0x66773C92835D0909,
-            ["SET_SCRIPT_GFX_DRAW_ORDER"] = (NativeHash)0xCFCC78391C8B3814,
+            ["GET_SCREEN_COORD_FROM_WORLD_COORD"] = (Hash)0xCB50D7AFCC8B0EC6,
+            ["GET_SCREEN_RESOLUTION"] = (Hash)0x66773C92835D0909,
+            ["SET_SCRIPT_GFX_DRAW_ORDER"] = (Hash)0xCFCC78391C8B3814,
 
             // Hud
-            ["_BG_SET_TEXT_COLOR"] = (NativeHash)0x16FA5CE47F184F1E,
-            ["_BG_SET_TEXT_SCALE"] = (NativeHash)0xA1253A3C870B6843,
-            ["_BG_DISPLAY_TEXT"] = (NativeHash)0x16794E044C9EFB58,
-            ["SET_TEXT_FONT"] = (NativeHash)0x66E0276CC5F6B9DA,
-            ["SET_TEXT_DROPSHADOW"] = (NativeHash)0x465C84BC39F1C351,
-            ["IS_PAUSE_MENU_ACTIVE"] = (NativeHash)0x535384D6067BA42E,
+            ["_BG_SET_TEXT_COLOR"] = (Hash)0x16FA5CE47F184F1E,
+            ["_BG_SET_TEXT_SCALE"] = (Hash)0xA1253A3C870B6843,
+            ["_BG_DISPLAY_TEXT"] = (Hash)0x16794E044C9EFB58,
+            ["SET_TEXT_FONT"] = (Hash)0x66E0276CC5F6B9DA,
+            ["SET_TEXT_DROPSHADOW"] = (Hash)0x465C84BC39F1C351,
+            ["IS_PAUSE_MENU_ACTIVE"] = (Hash)0x535384D6067BA42E,
 
             // Misc
-            ["VAR_STRING"] = (NativeHash)0xFA925AC00EB830B9,
-            ["VDIST"] = (NativeHash)0x2A488C176D52CCA5,
-            ["VDIST2"] = (NativeHash)0xB7A628320EFF8E47,
+            ["VAR_STRING"] = (Hash)0xFA925AC00EB830B9,
+            ["VDIST"] = (Hash)0x2A488C176D52CCA5,
+            ["VDIST2"] = (Hash)0xB7A628320EFF8E47,
 
             // Event
-            ["SUPPRESS_SHOCKING_EVENTS_NEXT_FRAME"] = (NativeHash)0x84994FAD4E4E4E69,
+            ["SUPPRESS_SHOCKING_EVENTS_NEXT_FRAME"] = (Hash)0x84994FAD4E4E4E69,
 
             // Fire
-            ["ADD_EXPLOSION"] = (NativeHash)0x7D6F58F69DA92530,
-            ["ADD_OWNED_EXPLOSION"] = (NativeHash)0xD84A917A64D4D016,
-            ["ADD_EXPLOSION_WITH_USER_VFX"] = (NativeHash)0x53BA259F3A67A99E,
+            ["ADD_EXPLOSION"] = (Hash)0x7D6F58F69DA92530,
+            ["ADD_OWNED_EXPLOSION"] = (Hash)0xD84A917A64D4D016,
+            ["ADD_EXPLOSION_WITH_USER_VFX"] = (Hash)0x53BA259F3A67A99E,
 
             // Networking
-            ["NET_TO_VEH"] = (NativeHash)0xBFFEAB45A9A9094A,
-            ["NET_TO_ENT"] = (NativeHash)0x367B936610BA360C,
-            ["NET_TO_OBJ"] = (NativeHash)0xD8515F5FEA14CB3F,
-            ["NET_TO_PED"] = (NativeHash)0xBDCD95FC216A8B3E,
+            ["NET_TO_VEH"] = (Hash)0xBFFEAB45A9A9094A,
+            ["NET_TO_ENT"] = (Hash)0x367B936610BA360C,
+            ["NET_TO_OBJ"] = (Hash)0xD8515F5FEA14CB3F,
+            ["NET_TO_PED"] = (Hash)0xBDCD95FC216A8B3E,
 
-            ["PED_TO_NET"] = (NativeHash)0x0EDEC3C276198689,
-            ["OBJ_TO_NET"] = (NativeHash)0x99BFDC94A603E541,
-            ["VEH_TO_NET"] = (NativeHash)0xB4C94523F023419C,
+            ["PED_TO_NET"] = (Hash)0x0EDEC3C276198689,
+            ["OBJ_TO_NET"] = (Hash)0x99BFDC94A603E541,
+            ["VEH_TO_NET"] = (Hash)0xB4C94523F023419C,
 
-            ["NETWORK_IS_HOST"] = (NativeHash)0x8DB296B814EDDA07,
-            ["NETWORK_GET_ENTITY_FROM_NETWORK_ID"] = (NativeHash)0xCE4E5D9B0A4FF560,
+            ["NETWORK_IS_HOST"] = (Hash)0x8DB296B814EDDA07,
+            ["NETWORK_GET_ENTITY_FROM_NETWORK_ID"] = (Hash)0xCE4E5D9B0A4FF560,
 
             // Map
-            ["BLIP_ADD_FOR_COORDS"] = (NativeHash)0x554D9D53F696D002,
-            ["BLIP_ADD_FOR_ENTITY"] = (NativeHash)0x23F74C2FDA6E7C61,
-            ["BLIP_ADD_FOR_RADIUS"] = (NativeHash)0x45F13B7E0A15C880,
+            ["BLIP_ADD_FOR_COORDS"] = (Hash)0x554D9D53F696D002,
+            ["BLIP_ADD_FOR_ENTITY"] = (Hash)0x23F74C2FDA6E7C61,
+            ["BLIP_ADD_FOR_RADIUS"] = (Hash)0x45F13B7E0A15C880,
 
-            ["REMOVE_BLIP"] = (NativeHash)0xF2C3C9DA47AAA54A,
-            ["SET_BLIP_ROTATION"] = (NativeHash)0x6049966A94FBE706,
-            ["SET_BLIP_SCALE"] = (NativeHash)0xD38744167B2FA257,
-            ["SET_BLIP_SPRITE"] = (NativeHash)0x74F74D3207ED525C,
-            ["SET_BLIP_FLASHES"] = (NativeHash)0x0DF2B55F717DDB10,
-            ["IS_BLIP_ON_MINIMAP"] = (NativeHash)0x46534526B9CD2D17,
-            ["_SET_BLIP_NAME_FROM_PLAYER_STRING"] = (NativeHash)0x9CB1A1623062F402,
+            ["REMOVE_BLIP"] = (Hash)0xF2C3C9DA47AAA54A,
+            ["SET_BLIP_ROTATION"] = (Hash)0x6049966A94FBE706,
+            ["SET_BLIP_SCALE"] = (Hash)0xD38744167B2FA257,
+            ["SET_BLIP_SPRITE"] = (Hash)0x74F74D3207ED525C,
+            ["SET_BLIP_FLASHES"] = (Hash)0x0DF2B55F717DDB10,
+            ["IS_BLIP_ON_MINIMAP"] = (Hash)0x46534526B9CD2D17,
+            ["_SET_BLIP_NAME_FROM_PLAYER_STRING"] = (Hash)0x9CB1A1623062F402,
 
             // Cam
-            ["IS_SCREEN_FADING_IN"] = (NativeHash)0x0CECCC63FFA2EF24,
-            ["IS_SCREEN_FADING_OUT"] = (NativeHash)0x02F39BEFE7B88D00,
-            ["IS_SCREEN_FADED_OUT"] = (NativeHash)0xF5472C80DF2FF847,
-            ["IS_SCREEN_FADED_IN"] = (NativeHash)0x37F9A426FBCF4AF2,
+            ["IS_SCREEN_FADING_IN"] = (Hash)0x0CECCC63FFA2EF24,
+            ["IS_SCREEN_FADING_OUT"] = (Hash)0x02F39BEFE7B88D00,
+            ["IS_SCREEN_FADED_OUT"] = (Hash)0xF5472C80DF2FF847,
+            ["IS_SCREEN_FADED_IN"] = (Hash)0x37F9A426FBCF4AF2,
 
-            ["DO_SCREEN_FADE_IN"] = (NativeHash)0x6A053CF596F67DF7,
-            ["DO_SCREEN_FADE_OUT"] = (NativeHash)0x40C719A5E410B9E4,
+            ["DO_SCREEN_FADE_IN"] = (Hash)0x6A053CF596F67DF7,
+            ["DO_SCREEN_FADE_OUT"] = (Hash)0x40C719A5E410B9E4,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -352,13 +349,13 @@
         public static void DisablePedPainAudio(int ped, bool state)
             => Function.Call(NativeHashes["DISABLE_PED_PAIN_AUDIO"], ped, state);
 
-        public static int CreateVehicle(Hash hash, float x, float y, float z, float heading, bool isNetwork, bool bScriptHostVeh = false)
+        public static int CreateVehicle(uint hash, float x, float y, float z, float heading, bool isNetwork, bool bScriptHostVeh = false)
             => Function.Call<int>(NativeHashes["CREATE_VEHICLE"], hash, x, y, z, heading, isNetwork, bScriptHostVeh, false, false);
 
-        public static int CreateVehicle(Hash hash, Vector3 coords, float heading, bool isNetwork, bool bScriptHostVeh = false)
+        public static int CreateVehicle(uint hash, Vector3 coords, float heading, bool isNetwork, bool bScriptHostVeh = false)
             => Function.Call<int>(NativeHashes["CREATE_VEHICLE"], hash, coords.X, coords.Y, coords.Z, heading, isNetwork, bScriptHostVeh, false, false);
 
-        public static void SetModelAsNoLongerNeeded(Hash hash)
+        public static void SetModelAsNoLongerNeeded(uint hash)
             => Function.Call(NativeHashes["SET_MODEL_AS_NO_LONGER_NEEDED"], hash);
 
         public static uint GetHashKey(string str)
@@ -367,25 +364,25 @@
         public static void SetPedIntoVehicle(int ped, int vehicle, VehicleSeat seatIndex)
             => Function.Call(NativeHashes["SET_PED_INTO_VEHICLE"], ped, vehicle, seatIndex);
 
-        public static void RequestModel(Hash hash)
+        public static void RequestModel(uint hash)
             => Function.Call(NativeHashes["REQUEST_MODEL"], hash);
 
-        public static bool HasModelLoaded(Hash hash)
+        public static bool HasModelLoaded(uint hash)
             => Function.Call<bool>(NativeHashes["HAS_MODEL_LOADED"], hash);
 
-        public static bool IsModelInCdImage(Hash hash)
+        public static bool IsModelInCdImage(uint hash)
             => Function.Call<bool>(NativeHashes["IS_MODEL_IN_CDIMAGE"], hash);
 
-        public static bool IsModelAVehicle(Hash hash)
+        public static bool IsModelAVehicle(uint hash)
             => Function.Call<bool>(NativeHashes["IS_MODEL_A_VEHICLE"], hash);
 
-        public static bool IsModelValid(Hash hash)
+        public static bool IsModelValid(uint hash)
             => Function.Call<bool>(NativeHashes["IS_MODEL_VALID"], hash);
 
         public static int GetPlayerPed(int player)
             => Function.Call<int>(NativeHashes["GET_PLAYER_PED"], player);
 
-        public static bool IsModelAHorse(Hash hash)
+        public static bool IsModelAHorse(uint hash)
             => Function.Call<bool>(NativeHashes["_IS_THIS_MODEL_A_HORSE"], hash);
 
         public static void BoostPlayerHorseSpeedForTime(int player, float speedBoost, int duration)
@@ -585,19 +582,19 @@
         public static void SetTrainCruiseSpeed(int train, float speed)
             => Function.Call(NativeHashes["SET_TRAIN_CRUISE_SPEED"], train, speed);
 
-        public static int AddBlipForCoords(Hash hash, float x, float y, float z)
+        public static int AddBlipForCoords(uint hash, float x, float y, float z)
             => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, x, y, z);
 
-        public static int AddBlipForCoords(Hash hash, Vector3 coords)
+        public static int AddBlipForCoords(uint hash, Vector3 coords)
             => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_COORDS"], hash, coords.X, coords.Y, coords.Z);
 
-        public static int AddBlipForRadius(Hash hash, float x, float y, float z, float radius)
+        public static int AddBlipForRadius(uint hash, float x, float y, float z, float radius)
             => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, x, y, z, radius);
 
-        public static int AddBlipForRadius(Hash hash, Vector3 coords, float radius)
+        public static int AddBlipForRadius(uint hash, Vector3 coords, float radius)
             => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_RADIUS"], hash, coords.X, coords.Y, coords.Z, radius);
 
-        public static int AddBlipForEntity(Hash hash, int entity)
+        public static int AddBlipForEntity(uint hash, int entity)
             => Function.Call<int>(NativeHashes["BLIP_ADD_FOR_ENTITY"], hash, entity);
 
         public static void RemoveBlip(ref int blip)
@@ -616,7 +613,7 @@
         public static void SetBlipScale(int blip, float scale)
             => Function.Call(NativeHashes["SET_BLIP_SCALE"], blip, scale);
 
-        public static void SetBlipSprite(int blip, Hash hash)
+        public static void SetBlipSprite(int blip, uint hash)
             => Function.Call(NativeHashes["SET_BLIP_SPRITE"], blip, hash);
 
         public static void SetBlipName(int blip, VarString name)
@@ -715,5 +712,8 @@
         
         public static Vector3 GetEntitySpeedVector(int entity)
             => Function.Call<Vector3>(NativeHashes["GET_ENTITY_SPEED_VECTOR"], entity);
+
+        public static uint GetEntityModel(int entity)
+            => Function.Call<uint>(NativeHashes["GET_ENTITY_MODEL"], entity);
     }
 }

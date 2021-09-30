@@ -84,6 +84,8 @@
             get => Natives.GetEntitySpeedVector(this.Handle);   
         }
 
+        public MaterialHash
+
         public static Entity FromNetworkId(int netId)
             => FromHandle(Natives.NetworkGetEntityFromNetworkId(netId));
 
