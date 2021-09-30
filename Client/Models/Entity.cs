@@ -51,6 +51,39 @@
             get => Natives.GetEntityType(this.Handle);
         }
 
+        public float Heading
+        {
+            get => Natives.GetEntityHeading(this.Handle);
+            set => Natives.SetEntityHeading(this.Handle, value);
+        }
+
+        public float HeightAboveGround
+        {
+            get => Natives.GetEntityHeightAboveGround(this.Handle);
+        }
+
+        public int Health
+        {
+            get => Natives.GetEntityHealth(this.Handle) - 100;
+            set => Natives.SetEntityHealth(this.Handle, value + 100);
+        }
+
+        public int MaxHealth
+        {
+            get => Natives.GetEntityMaxHealth(this.Handle) - 100;
+            set => Natives.SetEntityMaxHealth(this.Handle, value + 100);
+        }
+
+        public float Speed
+        {
+            get => Natives.GetEntitySpeed(this.Handle);
+        }
+
+        public Vector3 SpeedVector
+        {
+            get => Natives.GetEntitySpeedVector(this.Handle);   
+        }
+
         public static Entity FromNetworkId(int netId)
             => FromHandle(Natives.NetworkGetEntityFromNetworkId(netId));
 
@@ -77,6 +110,9 @@
                 default: return null;
             }
         }
+
+        public void PlaceOnGroundProperly()
+            => Natives.PlaceEntityOnGroundProperly(this.Handle);
 
         public override bool Exists()
             => Natives.DoesEntityExists(this.Handle);
