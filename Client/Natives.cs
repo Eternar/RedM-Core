@@ -85,6 +85,7 @@
             ["GET_ENTITY_SPEED"] = (Hash)0xFB6BA510A533DF81,
             ["GET_ENTITY_SPEED_VECTOR"] = (Hash)0xF2DB09816A419DC5,
             ["GET_ENTITY_MODEL"] = (Hash)0xDA76A9F39210D365,
+            ["GET_ENTITY_FORWARD_VECTOR"] = (Hash)0x2412D9C05BB09B97,
 
             ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
@@ -715,5 +716,8 @@
 
         public static uint GetEntityModel(int entity)
             => Function.Call<uint>(NativeHashes["GET_ENTITY_MODEL"], entity);
+
+        public static Vector3 GetEntityForwardVector(int entity)
+            => Function.Call<Vector3>(NativeHashes["GET_ENTITY_FORWARD_VECTOR"], entity);
     }
 }

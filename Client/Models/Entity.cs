@@ -84,7 +84,26 @@
             get => Natives.GetEntitySpeedVector(this.Handle);   
         }
 
-        public MaterialHash
+        public uint Model
+        {
+            get => Natives.GetEntityModel(this.Handle);
+        }
+
+        public Vector3 PositionNoOffset
+        {
+            set => Natives.SetEntityCoordsNoOffset(this.Handle, value.X, value.Y, value.Z, true, true, true);
+        }
+
+        public Vector3 ForwardVector
+        {
+            get => Natives.GetEntityForwardVector(this.Handle);
+        }
+
+        public Vector3 Velocity
+        {
+            get => Natives.GetEntityVelocity(this.Handle, true);
+            set => Natives.SetEntityVelocity(this.Handle, value);
+        }
 
         public static Entity FromNetworkId(int netId)
             => FromHandle(Natives.NetworkGetEntityFromNetworkId(netId));
