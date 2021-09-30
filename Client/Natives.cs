@@ -392,11 +392,6 @@
         public static bool IsEntityOnScreen(int entity)
             => Function.Call<bool>(NativeHashes["IS_ENTITY_ON_SCREEN"], entity);
 
-        /// <summary>
-        /// Hardcoded to always set x to 1280 and y to 720.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
         public static unsafe void GetScreenResolution(ref int x, ref int y)
         {
             OutputArgument outX = new OutputArgument();
