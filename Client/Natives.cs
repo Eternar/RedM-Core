@@ -47,11 +47,15 @@
             ["GET_PED_IS_BEING_GRAPPLED"] = (Hash)0x3BDFCF25B58B0415,
             ["GET_PED_IS_GRAPPLING"] = (Hash)0x0E99E3BF11BB6367,
             ["GET_PED_MONEY"] = (Hash)0x3F69145BBA87BAE7,
-            ["GET_PED_MONEY"] = (Hash)0x3F69145BBA87BAE7,
             ["GET_PED_TIME_OF_DEATH"] = (Hash)0x1E98817B311AE98A,
             ["IS_PED_CARRYING_SOMETHING"] = (Hash)0xA911EE21EDF69DAF,
             ["IS_PED_DIVING"] = (Hash)0x5527B8246FEF9B11,
             ["IS_PED_INJURED"] = (Hash)0x84A2DD9AC37C35C1,
+            ["IS_PED_SHOOTING"] = (Hash)0x34616828CD07F1A1,
+            ["IS_PED_SITTING"] = (Hash)0x84D0BF2B21862059,
+            ["SET_PED_MAX_HEALTH"] = (Hash)0xF5F6378C4F3419D3,
+            ["SET_PED_MONEY"] = (Hash)0xA9C8960E8684C1B5,
+            ["IS_PED_CUFFED"] = (Hash)0x74E559B3BC910685,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -866,5 +870,20 @@
 
         public static bool IsPedInjured(int ped)
             => Function.Call<bool>(NativeHashes["IS_PED_INJURED"], ped);
+
+        public static bool IsPedShooting(int ped)
+            => Function.Call<bool>(NativeHashes["IS_PED_SHOOTING"], ped);
+
+        public static bool IsPedSitting(int ped)
+            => Function.Call<bool>(NativeHashes["IS_PED_SITTING"], ped);
+
+        public static void SetPedMaxHealth(int ped, int value)
+            => Function.Call(NativeHashes["SET_PED_MAX_HEALTH"], ped, value);
+
+        public static void SetPedMoney(int ped, int amount)
+            => Function.Call(NativeHashes["SET_PED_MAX_HEALTH"], ped, amount);
+
+        public static bool IsPedCuffed(int ped)
+            => Function.Call<bool>(NativeHashes["IS_PED_CUFFED"], ped);
     }
 }
