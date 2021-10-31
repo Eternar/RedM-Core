@@ -58,6 +58,9 @@
         public void SetAttributeValue(PedAttribute attribute, int value)
             => Natives.SetAttributeCoreValue(this.Handle, attribute, value);
 
+        public bool IsEnteringTransport(Entity transportEntity)
+            => Natives.IsPedEnteringTransport(this.Handle, transportEntity.Handle, false);
+
         public void ResetScale()
             => this.Scale = 1.0f;
 

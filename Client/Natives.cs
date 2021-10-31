@@ -42,6 +42,8 @@
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
             ["_CHANGE_PED_STAMINA"] = (Hash)0xC3D4B754C0E86B9E,
+            
+            ["IS_PED_ENTERING_TRANSPORT"] = (Hash)0x619E63980BFC0096,
 
             // Blip
             ["GET_BLIP_FROM_ENTITY"] = (Hash)0x6D2C41A8BD6D6FD0,
@@ -741,5 +743,8 @@
 
         public static void SetAttributeCoreValue(int ped, PedAttribute attribute, int value)
             => Function.Call(NativeHashes["_SET_ATTRIBUTE_CORE_VALUE"], ped, attribute, value);
+
+        public static bool IsPedEnteringTransport(int ped, int transportEntity, bool p2)
+            => Function.Call<bool>(NativeHashes["IS_PED_ENTERING_TRANSPORT"], ped, transportEntity, p2);
     }
 }
