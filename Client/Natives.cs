@@ -109,6 +109,10 @@
             ["_GET_PLAYER_HEALTH"] = (Hash)0x0317C947D062854E,
             ["GET_PLAYER_INVINCIBLE"] = (Hash)0x0CBBCB2CCFA7DC4E,
             ["_GET_PLAYER_STAMINA"] = (Hash)0x0FF421E467373FCF,
+            ["IS_PLAYER_CLIMBING"] = (Hash)0xB8A70C22FD48197A,
+            ["IS_PLAYER_RIDING_TRAIN"] = (Hash)0x2FB0ACADA6A238DD,
+            ["IS_PLAYER_TARGETTING_ENTITY"] = (Hash)0x27F89FDC16688A7A,
+            ["SET_PLAYER_MODEL"] = (Hash)0xED40380076A31506,
 
             ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
@@ -785,5 +789,18 @@
 
         public static float GetPlayerStamina(int player)
             => Function.Call<float>(NativeHashes["_GET_PLAYER_STAMINA"], player);
+
+        public static bool IsPlayerClimbing(int player)
+            => Function.Call<bool>(NativeHashes["IS_PLAYER_CLIMBING"], player);
+
+        public static bool IsPlayerRidingTrain(int player)
+            => Function.Call<bool>(NativeHashes["IS_PLAYER_RIDING_TRAIN"], player);
+
+        public static bool IsPlayerTargettingEntity(int player, int entity, bool p2)
+            => Function.Call<bool>(NativeHashes["IS_PLAYER_TARGETTING_ENTITY"],player, entity, p2);
+
+        public static void SetPlayerModel(int player, PedHash modelHash, bool p2)
+            => Function.Call(NativeHashes["SET_PLAYER_MODEL"], player, modelHash, p2);
+
     }
 }
