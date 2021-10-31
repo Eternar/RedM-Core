@@ -42,6 +42,11 @@
             ["CLEAR_PED_WETNESS"] = (Hash)0x9C720776DAA43E7E,
             ["CREATE_PED_INSIDE_VEHICLE"] = (Hash)0x7DD959874C1FD534,
             ["CLONE_PED"] = (Hash)0xEF29A16337FACADB,
+            ["_FREEZE_PED_CAMERA_ROTATION"] = (Hash)0xFF287323B0E2C69A,
+            ["GET_PED_CAUSE_OF_DEATH"] = (Hash)0x16FFE42AB2D2DC59,
+            ["GET_PED_IS_BEING_GRAPPLED"] = (Hash)0x3BDFCF25B58B0415,
+            ["GET_PED_IS_GRAPPLING"] = (Hash)0x0E99E3BF11BB6367,
+            ["GET_PED_MONEY"] = (Hash)0x3F69145BBA87BAE7,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -830,6 +835,20 @@
         public static int CreatePedInsideVehicle(int vehicle, uint modelHah, int seatIndex, bool p3, bool p4, bool p5)
             => Function.Call<int>(NativeHashes["CREATE_PED_INSIDE_VEHICLE"], vehicle, modelHah, seatIndex, p3, p4, p5); 
             
+        public static void FreezePedCameraRotation(int ped)
+            => Function.Call(NativeHashes["_FREEZE_PED_CAMERA_ROTATION"], ped);
+
+        public static uint GetPedCauseOfDeath(int ped)
+            => Function.Call<uint>(NativeHashes["GET_PED_CAUSE_OF_DEATH"], ped);
+
+        public static bool GetPedIsBeingGrappled(int ped)
+            => Function.Call<bool>(NativeHashes["GET_PED_IS_BEING_GRAPPLED"], ped);
+
+        public static bool GetPedIsGrappling(int ped)
+            => Function.Call<bool>(NativeHashes["GET_PED_IS_GRAPPLING"], ped);
+
+        public static int GetPedMoney(int ped)
+            => Function.Call<int>(NativeHashes["GET_PED_MONEY"], ped);
 
     }
 }
