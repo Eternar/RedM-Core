@@ -108,6 +108,7 @@
             ["GET_ENTITY_PLAYER_IS_FREE_AIMING_AT"] = (Hash)0xA6817C110B830EAD,
             ["_GET_PLAYER_HEALTH"] = (Hash)0x0317C947D062854E,
             ["GET_PLAYER_INVINCIBLE"] = (Hash)0x0CBBCB2CCFA7DC4E,
+            ["_GET_PLAYER_STAMINA"] = (Hash)0x0FF421E467373FCF,
 
             ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
@@ -781,5 +782,8 @@
 
         public static bool GetPlayerInvicible(int player)
             => Function.Call<bool>(NativeHashes["GET_PLAYER_INVINCIBLE"], player);
+
+        public static float GetPlayerStamina(int player)
+            => Function.Call<float>(NativeHashes["_GET_PLAYER_STAMINA"], player);
     }
 }
