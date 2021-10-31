@@ -103,6 +103,9 @@
             ["GET_PLAYER_PED"] = (Hash)0x275F255ED201B937,
             ["BOOST_PLAYER_HORSE_SPEED_FOR_TIME"] = (Hash)0x09C28F828EE674FA,
             ["GET_PLAYER_NAME"] = (Hash)0x7124FD9AC0E01BA0,
+            ["_SET_PED_BRAWLING_STYLE"] = (Hash)0x8BA83CC4288CD56D,
+            ["DISABLE_PLAYER_FIRING"] = (Hash)0x2970929FD5F9FC89,
+            ["GET_ENTITY_PLAYER_IS_FREE_AIMING_AT"] = (Hash)0xA6817C110B830EAD,
 
             ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
@@ -754,5 +757,21 @@
 
         public static void FreezeEntityPosition(int entity, bool toggle)
             => Function.Call(NativeHashes["FREEZE_ENTITY_POSITION"], entity, toggle);
+
+        public static void SetPedBrawlingStyle(int ped, BrawlingStyle brawlingStyle)
+            => Function.Call(NativeHashes["_SET_PED_BRAWLING_STYLE"], ped, brawlingStyle);
+
+        public static void DisablePlayerFiring(int player, bool toggle)
+            => Function.Call(NativeHashes["DISABLE_PLAYER_FIRING"], player, toggle);
+
+        public static bool GetEntityPlayerIsFreeAimingAt(int player, ref int entity)
+        {
+            OutputArgument outEntity = new OutputArgument();
+
+            bool result = Function.Call<bool>(NativeHashes["GET_ENTITY_PLAYER_IS_FREE_AIMING_AT"], player, outEntity);
+
+            entity = outEntity.GetResult<int>();
+            return result;
+        }
     }
 }
