@@ -56,6 +56,10 @@
             ["SET_PED_MAX_HEALTH"] = (Hash)0xF5F6378C4F3419D3,
             ["SET_PED_MONEY"] = (Hash)0xA9C8960E8684C1B5,
             ["IS_PED_CUFFED"] = (Hash)0x74E559B3BC910685,
+            ["IS_PED_IN_WRITHE"] = (Hash)0xDEB6D52126E7D640,
+            ["IS_PED_RUNNING"] = (Hash)0xC5286FFC176F28A2,
+            ["IS_PED_WALKING"] = (Hash)0xDE4C184B2B9B071A,
+            ["REMOVE_ALL_PED_WEAPONS"] = (Hash)0xF25DF915FA38C5F3,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -152,6 +156,7 @@
             ["SET_TRAIN_SPEED"] = (Hash)0xDFBA6BBFF7CCAFBB,
 
             ["SET_VEHICLE_CAN_BE_TARGETTED"] = (Hash)0x05254BA0B44ADC16,
+            ["CAN_SHUFFLE_SEAT"] = (Hash)0xF8B2D32A2231FD24,
 
             // Model
             ["SET_MODEL_AS_NO_LONGER_NEEDED"] = (Hash)0x4AD96EF928BD4F9A,
@@ -229,6 +234,7 @@
             ["TASK_STAND_STILL"] = (Hash)0x919BE13EED931959,
             ["TASK_JUMP"] = (Hash)0x0AE4086104E067B1,
             ["TASK_WHISTLE_ANIM"] = (Hash)0xD6401A1B2F63BED6,
+            ["TASK_PAUSE"] = (Hash)0xE73A266DB0CA9042,
         };
 
         public static void ForceLightningFlashAtCoords(float x, float y, float z)
@@ -885,5 +891,23 @@
 
         public static bool IsPedCuffed(int ped)
             => Function.Call<bool>(NativeHashes["IS_PED_CUFFED"], ped);
+
+        public static bool IsPedInWrithe(int ped)
+            => Function.Call<bool>(NativeHashes["IS_PED_IN_WRITHE"], ped);
+
+        public static bool IsPedRunning(int ped)
+            => Function.Call<bool>(NativeHashes["IS_PED_RUNNING"], ped);
+
+        public static bool IsPedWalking(int ped)
+            => Function.Call<bool>(NativeHashes["IS_PED_WALKING"], ped);
+
+        public static void TaskPause(int ped, int ms)
+            => Function.Call(NativeHashes["IS_PED_WALKING"], ped, ms);
+
+        public static bool CanShuffleSeat(int ped, VehicleSeat seatIndex)
+            => Function.Call<bool>(NativeHashes["CAN_SHUFFLE_SEAT"], ped, seatIndex);
+
+        public static void RemoveAllPedWeapons(int ped, bool p1, bool p2)
+            => Function.Call(NativeHashes["REMOVE_ALL_PED_WEAPONS"], ped, p1, p2);
     }
 }
