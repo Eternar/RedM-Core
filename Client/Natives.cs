@@ -38,6 +38,9 @@
             ["IS_PED_MALE"] = (Hash)0x6D9F5FAA7488BA46,
             ["_GET_ATTRIBUTE_CORE_VALUE"] = (Hash)0x36731AC041289BB1,
             ["_SET_ATTRIBUTE_CORE_VALUE"] = (Hash)0xC6258F41D86676E0,
+            ["CLEAR_PED_LAST_DAMAGE_BONE"] = (Hash)0x8EF6B7AC68E2F01B,
+            ["CLEAR_PED_WETNESS"] = (Hash)0x9C720776DAA43E7E,
+            ["CREATE_PED_INSIDE_VEHICLE"] = (Hash)0x7DD959874C1FD534,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -116,6 +119,7 @@
             ["SET_PLAYER_WEAPON_DAMAGE_MODIFIER"] = (Hash)0x94D529F7B73D7A85,
             ["IS_PLAYER_PLAYING"] = (Hash)0xBFFB35986CAAE58C,
             ["SET_EVERYONE_IGNORE_PLAYER"] = (Hash)0x34630A768925B852,
+            ["CLONE_PED"] = (Hash)0xEF29A16337FACADB,
 
             ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
@@ -813,6 +817,19 @@
 
         public static void SetEveryoneIgnorePlayer(int player, bool toggle)
             => Function.Call(NativeHashes["SET_EVERYONE_IGNORE_PLAYER"], player, toggle);
+
+        public static void ClearPedLastDamageBone(int player)
+            => Function.Call(NativeHashes["CLEAR_PED_LAST_DAMAGE_BONE"], player);
+
+        public static void ClearPlayerWetness(int ped)
+            => Function.Call(NativeHashes["CLEAR_PED_WETNESS"], ped);
+
+        public static int ClonePed(int ped, bool isNetwork, bool bScriptHostPed, bool copyHeadBlendFlag)
+            => Function.Call<int>(NativeHashes["CLONE_PED"], ped, isNetwork, bScriptHostPed, copyHeadBlendFlag);
+
+        public static int CreatePedInsideVehicle(int vehicle, uint modelHah, int seatIndex, bool p3, bool p4, bool p5)
+            => Function.Call<int>(NativeHashes["CREATE_PED_INSIDE_VEHICLE"], vehicle, modelHah, seatIndex, p3, p4, p5); 
+            
 
     }
 }
