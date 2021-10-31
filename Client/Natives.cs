@@ -113,6 +113,9 @@
             ["IS_PLAYER_RIDING_TRAIN"] = (Hash)0x2FB0ACADA6A238DD,
             ["IS_PLAYER_TARGETTING_ENTITY"] = (Hash)0x27F89FDC16688A7A,
             ["SET_PLAYER_MODEL"] = (Hash)0xED40380076A31506,
+            ["SET_PLAYER_WEAPON_DAMAGE_MODIFIER"] = (Hash)0x94D529F7B73D7A85,
+            ["IS_PLAYER_PLAYING"] = (Hash)0xBFFB35986CAAE58C,
+            ["SET_EVERYONE_IGNORE_PLAYER"] = (Hash)0x34630A768925B852,
 
             ["NETWORK_IS_PLAYER_ACTIVE"] = (Hash)0xB8DFD30D6973E135,
 
@@ -801,6 +804,15 @@
 
         public static void SetPlayerModel(int player, PedHash modelHash, bool p2)
             => Function.Call(NativeHashes["SET_PLAYER_MODEL"], player, modelHash, p2);
+
+        public static void SetPlayerWeaponDamageModifier(int player, float modifier)
+            => Function.Call(NativeHashes["SET_PLAYER_WEAPON_DAMAGE_MODIFIER"], player, modifier);
+
+        public static bool IsPlayerPlaying(int player)
+            => Function.Call<bool>(NativeHashes["IS_PLAYER_PLAYING"], player);
+
+        public static void SetEveryoneIgnorePlayer(int player, bool toggle)
+            => Function.Call(NativeHashes["SET_EVERYONE_IGNORE_PLAYER"], player, toggle);
 
     }
 }

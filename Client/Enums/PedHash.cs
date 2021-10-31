@@ -1,6 +1,6 @@
 ﻿namespace Eternar.Core
 {
-	public enum PedHash : uint
+    public enum PedHash : uint
 	{
         AfoWaptownfolk01 = 0x837B740E,
         UmmWapofficial01 = 0x5EDC8972,
