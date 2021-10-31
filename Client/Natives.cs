@@ -44,6 +44,7 @@
             ["_CHANGE_PED_STAMINA"] = (Hash)0xC3D4B754C0E86B9E,
             
             ["IS_PED_ENTERING_TRANSPORT"] = (Hash)0x619E63980BFC0096,
+            ["IS_PED_EXITING_TRANSPORT"] = (Hash)0x660639BC60157048,
 
             // Blip
             ["GET_BLIP_FROM_ENTITY"] = (Hash)0x6D2C41A8BD6D6FD0,
@@ -90,6 +91,7 @@
             ["GET_ENTITY_SPEED_VECTOR"] = (Hash)0xF2DB09816A419DC5,
             ["GET_ENTITY_MODEL"] = (Hash)0xDA76A9F39210D365,
             ["GET_ENTITY_FORWARD_VECTOR"] = (Hash)0x2412D9C05BB09B97,
+            ["FREEZE_ENTITY_POSITION"] = (Hash)0x7D9EFB7AD6B19754,
 
             ["IS_CONTROL_PRESSED"] = (Hash)0xF3A21BCD95725A4A,
 
@@ -746,5 +748,11 @@
 
         public static bool IsPedEnteringTransport(int ped, int transportEntity, bool p2)
             => Function.Call<bool>(NativeHashes["IS_PED_ENTERING_TRANSPORT"], ped, transportEntity, p2);
+
+        public static bool IsPedExitingTransport(int ped, int transportEntity)
+            => Function.Call<bool>(NativeHashes["IS_PED_EXITING_TRANSPORT"], ped, transportEntity);
+
+        public static void FreezeEntityPosition(int entity, bool toggle)
+            => Function.Call(NativeHashes["FREEZE_ENTITY_POSITION"], entity, toggle);
     }
 }
