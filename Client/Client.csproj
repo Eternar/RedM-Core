@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\RemoveItemReason.cs" />
     <Compile Include="Enums\BrawlingStyle.cs" />
     <Compile Include="Enums\EntityType.cs" />
     <Compile Include="Enums\Gender.cs" />
