@@ -63,6 +63,9 @@
             ["REMOVE_WEAPON_FROM_PED"] = (Hash)0x4899CB088EDF59B8,
             ["SET_PED_AMMO"] = (Hash)0x14E56BC5B5DB6A19,
             ["SET_PED_INFINITE_AMMO"] = (Hash)0x3EDCB0505123623B,
+            ["RESURRECT_PED"] = (Hash)0x71BC8E838B9C6035,
+            ["GET_PED_SOURCE_OF_DEATH"] = (Hash)0x93C8B64DEB84728C,
+            ["SET_PED_IS_DRUNK"] = (Hash)0x95D2D383D5396B8A,
 
             ["_RESTORE_PED_STAMINA"] = (Hash)0x675680D089BFA21F,
             ["_GET_PED_MAX_STAMINA"] = (Hash)0xCB42AFE2B613EE55,
@@ -921,5 +924,14 @@
 
         public static void SetPedInfiniteAmmo(int ped, bool toggle, uint weaponhash)
             => Function.Call(NativeHashes["SET_PED_INFINITE_AMMO"], ped, toggle, weaponhash);
+
+        public static void ResurrectPed(int ped)
+            => Function.Call(NativeHashes["RESURRECT_PED"], ped);
+
+        public static int GetPedSourceOfDeath(int ped)
+            => Function.Call<int>(NativeHashes["GET_PED_SOURCE_OF_DEATH"], ped);
+
+        public static void SetPedIsDrunk(int ped, bool toggle)
+            => Function.Call(NativeHashes["SET_PED_IS_DRUNK"], ped, toggle);
     }
 }
